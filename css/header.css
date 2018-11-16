@@ -1,0 +1,62 @@
+header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  z-index: 1;
+  border-bottom: 1px solid #e1e1e1;
+}
+header .logo-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+header .logo-container a {
+  display: block;
+}
+header .logo-container a img {
+  width: 100%;
+  max-width: 75px;
+}
+header .logo-container span {
+  font-size: 18px;
+  margin-left: 15px;
+}
+header .account-container a,
+header .account-container strong {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #e1e1e1;
+  color: #212121;
+  font-size: 16px;
+  font-family: 'roboto_condensedregular';
+  text-decoration: none;
+  text-transform: uppercase;
+}
+header .account-container a:last-child,
+header .account-container strong:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
+}
+header .account-container a:hover {
+  text-decoration: underline;
+}

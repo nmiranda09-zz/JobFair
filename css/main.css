@@ -1,0 +1,132 @@
+.banner-container a {
+  display: block;
+}
+.banner-container a img {
+  width: 100%;
+}
+.get-started-container {
+  background: url('../images/homepage-bg.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 150px;
+}
+.get-started-container h1 {
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.get-started-container p {
+  font-family: 'roboto_condensedlight';
+  font-size: 20px;
+  text-align: center;
+}
+.get-started-container .search-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 40px 0 20px;
+}
+.get-started-container .search-container input,
+.get-started-container .search-container select,
+.get-started-container .search-container button {
+  width: 100%;
+  padding: 15px 20px 15px 15px;
+  border: 0;
+  margin-right: 10px;
+  background: #fff;
+  font-family: 'roboto_condensedregular';
+  font-size: 16px;
+}
+.get-started-container .search-container input:focus,
+.get-started-container .search-container select:focus,
+.get-started-container .search-container button:focus {
+  outline: none;
+}
+.get-started-container .search-container input {
+  max-width: 350px;
+}
+.get-started-container .search-container select {
+  max-width: 200px;
+}
+.get-started-container .search-container button {
+  max-width: 120px;
+  background: #960898;
+  color: #fff;
+  font-family: 'roboto_condenseditalic';
+  text-transform: uppercase;
+}
+.recent-job-listing-container {
+  margin: 30px 25px;
+  padding: 20px;
+  background: #fff;
+}
+.recent-job-listing-container strong {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.recent-job-listing-container ul li {
+  margin-bottom: 10px;
+}
+.recent-job-listing-container ul li:last-child {
+  margin-bottom: 0;
+}
+.recent-job-listing-container ul li a {
+  font-size: 16px;
+  color: #212121;
+  text-decoration: none;
+}
+.recent-job-listing-container ul li a:hover {
+  color: #960898;
+}
+.recent-job-listing-container .see-all-btn {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ff191b;
+}
+.top-employers-container {
+  margin: 30px 25px;
+  padding: 20px;
+  background: #fff;
+}
+.top-employers-container strong {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.top-employers-container ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.top-employers-container ul li {
+  width: 32%;
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+.top-employers-container ul li:nth-child(3n + 1) {
+  margin-left: 0;
+}
+.top-employers-container ul li span {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 16px;
+}

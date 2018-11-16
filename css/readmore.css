@@ -1,0 +1,177 @@
+.description-index .jobpost .applyform-container {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.description-index .jobpost .applyform-container form {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+.description-index .jobpost .applyform-container form legend {
+  color: #ff191b;
+  margin-bottom: 20px;
+}
+.description-index .jobpost .applyform-container form h3 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 50px;
+  text-transform: uppercase;
+}
+.description-index .jobpost .applyform-container form h3 img {
+  max-width: 50px;
+  margin-left: 5px;
+}
+.description-index .jobpost .applyform-container form label {
+  display: block;
+  margin-bottom: 10px;
+}
+.description-index .jobpost .applyform-container form input:not([type="file"]) {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px 12px;
+  font-family: 'roboto_condensedregular';
+  font-size: 16px;
+}
+.description-index .jobpost .applyform-container form .apply-btn {
+  margin-top: 20px;
+  border: 0;
+  background: #960898;
+  color: #fff;
+  text-transform: uppercase;
+}
+.description-index .jobpost .applyform-container form .apply-btn:hover {
+  background: #ae09b0;
+}
+.description-index .jobpost .applyform-container .close-btn {
+  float: right;
+  margin: 0;
+  cursor: pointer;
+}
+.description-index .jobpost .applyform-container .close-btn:hover {
+  opacity: 0.9;
+}
+.description-index .jobpost .applyform-container .close-btn img {
+  margin: 0;
+  max-width: 20px;
+  width: 100%;
+}
+.description-index .jobpost h1 {
+  display: block;
+  font-family: 'roboto_condensedbold';
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.description-index .jobpost div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.description-index .jobpost div:not(.actions) {
+  margin-bottom: 20px;
+}
+.description-index .jobpost div:not(.actions) span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.description-index .jobpost div:not(.actions) span:last-child {
+  margin-right: 0;
+}
+.description-index .jobpost div:not(.actions) span img {
+  max-width: 25px;
+}
+.description-index .jobpost label {
+  font-family: 'roboto_condensedbold';
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.description-index .jobpost span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.description-index .jobpost span img {
+  width: 100%;
+  max-width: 18px;
+  margin-right: 5px;
+}
+.description-index .jobpost span.category {
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #3C0C7D;
+  color: #fff;
+  font-size: 10px;
+  font-family: 'roboto_condensedbold';
+  text-transform: uppercase;
+  text-align: center;
+}
+.description-index .jobpost span.description {
+  margin-top: 8px;
+  font-size: 23px;
+  font-family: 'roboto_condensedlight';
+  line-height: 1.3;
+}
+.description-index .jobpost .actions {
+  margin-top: 30px;
+}
+.description-index .jobpost .actions .readmore-btn.active + .applyform-container {
+  display: block;
+}
+.description-index .jobpost button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  padding: 12px;
+  background: #960898;
+  border: 0;
+  color: #fff;
+  font-family: 'roboto_condenseditalic';
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  margin-right: 20px;
+}
+.description-index .jobpost button:hover {
+  background: #ae09b0;
+}
+.description-index .jobpost button:focus {
+  outline: none;
+}
