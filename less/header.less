@@ -1,0 +1,56 @@
+@import "variable.less";
+
+header {
+	.flex-layout;
+	.flex-align(center);
+	.flex-justify-content(space-between);
+	position: fixed;
+    width: 100%;
+	padding: 20px;
+	background: @white;
+	z-index: 1;
+	border-bottom: 1px solid @light-gray;
+
+	.logo-container {
+		.flex-layout;
+		.flex-align(center);
+
+		a {
+			display: block;
+
+			img {
+				width: 100%;
+				max-width: 75px;
+			}
+		}
+
+		span {
+			font-size: 18px;
+			margin-left: 15px;
+		}
+	}
+
+	.account-container {
+		a,
+		strong {
+			margin-right: 10px;
+			padding-right: 10px;
+			border-right: 1px solid @light-gray;
+			color: @mine-shaft;
+			font-size: 16px;
+			font-family: @font-family-base;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			&:last-child {
+				margin-right: 0;
+				padding-right: 0;
+				border-right: 0;
+			}
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+}

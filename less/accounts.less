@@ -1,0 +1,163 @@
+@import "variable.less";
+
+.login-index,
+.register-index,
+.jobpost-index {
+	.page-main {
+		background: @light-gray;
+	}
+
+	header {
+		.account-container {
+
+			a:last-child {
+				margin-right: 0;
+				padding-right: 0;
+				border-right: 0;
+			}
+		}
+	}
+
+	.page-wrapper {
+		padding: 50px 25px;
+
+		.inner-wrapper {
+			.flex-layout;
+			padding: 50px;
+			background: @white;
+		}
+
+		h3 {
+			margin-bottom: 30px;
+			color: @mine-shaft;
+			font-family: @font-family-bold;
+			font-size: 30px;
+			text-transform: uppercase;
+		}
+
+		.form {
+			width: 50%;
+			margin-right: 50px;
+			padding-right: 50px;
+			border-right: 2px solid @light-gray;
+
+			legend {
+				margin-bottom: 20px;
+				color: @torch-red;
+			}
+
+			label {
+				display: inline-block;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+
+			input[type="submit"] {
+				margin-bottom: 0;
+				border: 0;
+				background: @main-color;
+				color: @white;
+				text-transform: uppercase;
+				font-family: @font-family-italic;
+
+				&:active {
+					background: lighten(@main-color, 5%);
+				}
+			}
+
+			input,
+			select {
+				display: block;
+				width: 100%;
+				padding: 15px 20px;
+				margin-bottom: 15px;
+				font-family: @font-family-base;
+				font-size: 16px;
+
+				&:focus {
+					outline: none;
+				}
+			}
+
+			textarea {
+				width: 100%;
+				padding: 15px 20px;
+				resize: none;
+				min-height: 300px;
+				overflow-y: auto;
+				margin-bottom: 15px;
+				font-family: @font-family-base;
+				font-size: 16px;
+
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+
+		.info-container {
+			width: 50%;
+
+			p {
+				font-size: 20px;
+				font-family: @font-family-light;
+				line-height: 1.2;
+
+				a {
+					color: @torch-red;
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+
+.account-index {
+	.page-main {
+		background: @light-gray;
+	}
+
+	.page-wrapper {
+		.flex-layout;
+		padding: 50px 25px;
+
+		.left-column {
+			width: 30%;
+			margin-right: 30px;
+			background: @white;
+
+			h3 {
+				background: @mine-shaft;
+			    padding: 20px;
+			    color: @white;
+			    font-size: 25px;
+			    text-transform: uppercase;
+			    text-align: center;
+			    
+			}
+
+			a {
+				display: block;
+				padding: 20px;
+			    color: @mine-shaft;
+			    border-bottom: 1px solid @light-gray;
+			    font-size: 16px;
+			    text-transform: uppercase;
+			    text-decoration: none;
+
+			    &:hover {
+			    	color: @main-color;
+			   	}
+			}
+		}
+
+		.right-column {
+			width: 70%;
+			background: @white;
+		}
+	}
+}

@@ -1,0 +1,159 @@
+@import "variable.less";
+
+.jobsearch-index {
+	.page-wrapper {
+		.flex-layout;
+
+		.jobsearch-filter-container {
+			.flex-layout;
+			.flex-align(center);
+			margin-bottom: 20px;
+
+			label {
+				margin-right: 10px;
+				text-transform: uppercase;
+			}
+
+			select {
+				width: 100%;
+				max-width: 200px;
+				padding: 12px 20px 12px 12px;
+				margin-right: 10px;
+				font-family: @font-family-base;
+				text-transform: uppercase;
+			}
+
+			button {
+				.round-borders(5px);
+				display: block;
+				width: 100%;
+				padding: 12px;
+				border: 0;
+				background: @mine-shaft;
+				color: @white;
+				font-family: @font-family-italic;
+				text-transform: uppercase;
+				text-align: center;
+
+			}
+		}
+
+		.left-column {
+			width: 70%;
+			margin-right: 30px;
+
+			h3 {
+				margin-bottom: 30px;
+				font-size: 30px;
+				text-transform: uppercase;
+			}
+
+			.search-container {
+				max-height: 500px;
+				overflow-y: auto;
+				padding-right: 10px;
+			}
+
+			.jobpost {
+				.round-borders(5px);
+				margin-bottom: 20px;
+				padding: 20px;
+				border: 1px solid @light-gray;
+
+				
+				label {
+					font-size: 16px;
+					font-family: @font-family-bold;
+					text-transform: uppercase;
+				}
+
+				span {
+					display: block;
+					margin-bottom: 10px;
+					font-size: 16px;
+
+					img {
+						width: 100%;
+						max-width: 18px;
+						margin-right: 5px;
+					}
+
+					&.category {
+						display: inline-block;
+						padding: 10px;
+						margin-bottom: 8px;
+						background: @blue;
+						color: @white;
+						font-size: 10px;
+						font-family: @font-family-bold;
+						text-transform: uppercase;
+						text-align: center;
+					}					
+
+					&.jobtitle {
+						font-size: 23px;
+						font-family: @font-family-bold;
+					}
+
+					&.description {
+						margin-top: 8px;
+						line-height: 1.3;
+					}
+				}
+
+				a {
+					color: @torch-red;
+					font-family: @font-family-bold;
+				}
+			}
+		}
+
+		.right-column {
+			width: 30%;
+
+			h3 {
+				padding: 20px;
+				background: @mine-shaft;
+				color: @white;
+				font-size: 20px;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			.jobpost-container {
+			    max-height: 500px;
+			    overflow-y: auto;
+			    border: 1px solid @light-gray;
+
+			    &:first-of-type,
+			    &:only-of-type {
+			    	border-top: 0;
+			    }
+			}
+
+			.jobpost {
+				padding: 20px;
+				border-bottom: 1px solid @light-gray;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				span {
+					display: block;
+					margin-bottom: 10px;
+					font-size: 16px;
+					font-family: @font-family-light;
+				}
+
+				button {
+					background: none;
+					border: 0;
+					color: @main-color;
+					text-decoration: underline;
+				}
+			}
+
+		}
+	}
+}

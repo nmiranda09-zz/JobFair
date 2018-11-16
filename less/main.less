@@ -1,0 +1,145 @@
+@import "variable.less";
+
+.banner-container {
+	a {
+		display: block;
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.get-started-container {
+	background: url('../images/homepage-bg.png') no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 150px;
+
+	h1 {
+		font-size: 50px;
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 5px;
+	}
+
+	p {
+		font-family: @font-family-light;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	.search-container {
+		.flex-layout;
+		.flex-justify-content(center);
+		margin: 40px 0 20px;
+
+		input,
+		select,
+		button {
+			width: 100%;
+			padding: 15px 20px 15px 15px;
+			border: 0;
+			margin-right: 10px;
+			background: @white;
+			font-family: @font-family-base;
+			font-size: 16px;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		input {
+			max-width: 350px;
+		}
+		
+		select {
+			max-width: 200px;
+		}
+
+		button {
+			max-width: 120px;
+			background: @main-color;
+			color: @white;
+			font-family: @font-family-italic;
+			text-transform: uppercase;
+		}
+	}
+
+
+}
+
+.recent-job-listing-container {
+	margin: 30px 25px;
+	padding: 20px;
+	background: @white;
+
+	strong {
+		display: inline-block;
+		margin-bottom: 20px;
+		font-size: 25px;
+		text-transform: uppercase;
+	}
+
+	ul {
+		li {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			a {
+				font-size: 16px;
+				color: @mine-shaft;
+				text-decoration: none;
+
+				&:hover {
+					color: @main-color;
+				}
+			}
+		}
+	}
+
+	.see-all-btn {
+		display: inline-block;
+		margin-top: 20px;
+		color: @torch-red;
+	}
+}
+
+.top-employers-container {
+	margin: 30px 25px;
+	padding: 20px;
+	background: @white;
+
+	strong {
+		display: inline-block;
+		margin-bottom: 20px;
+		font-size: 25px;
+		text-transform: uppercase;
+	}
+
+	ul {
+		.flex-layout;
+		.flex-wrap(wrap);
+		margin: 20px 0;
+
+		li {
+			width: 32%;
+			margin-left: 15px;
+			margin-bottom: 30px;
+
+			&:nth-child(3n + 1) {
+				margin-left: 0;
+			}
+
+			span {
+				display: inline-block;
+				margin-top: 10px;
+				font-size: 16px;
+			}
+		}
+	}
+}
