@@ -40,8 +40,7 @@
 	    		<div class="recent-application-container">
 	    			<h3>My Recent Applications</h3>
 
-	    			<div class="jobpost-container">
-	    				<?php applications(); ?>	
+	    			<div class="jobpost-container">	
 	    			</div>
 	    			
 	    		</div>

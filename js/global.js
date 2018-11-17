@@ -4,6 +4,7 @@ $(document).ready(function () {
 	/*addActive();*/
 	applyModal();
 	changeApplyBtnText();
+	openTabs();
 
 	function preventFormResubmit() {
 		if ( window.history.replaceState ) {
@@ -55,5 +56,22 @@ $(document).ready(function () {
 		if ($('.apply-btn').prop('disabled') == true) {
 			$('.apply-btn').val('Applied');
 		}
+	}
+
+	function openTabs() {
+		
+
+		$(".tab-list").on("click", ".tab", function(e) {
+			e.preventDefault();
+			
+			// will remove all active classes from the tabs...
+			$(".tab").removeClass("active");
+			// will hide all tab content...
+			$(".tab-content").removeClass("show");
+			
+			// and will activate the current tab and content.
+			$(this).addClass("active");
+			$($(this).attr("href")).addClass("show");
+		});
 	}
 });

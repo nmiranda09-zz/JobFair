@@ -134,7 +134,7 @@
     				<span class="name"><?php echo $firstname . ' ' .$lastname; ?></span>
     				<span class="headline">Web Developer</span>
     				<span class="school-graduated">La Consolacion College - Bacolod</span>
-	    			<span class="outline">I don't want to work.</span>
+	    			<span class="outline">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 	    			<button type="submit">Check Profile</button>	
     			</div>
 			</div>
@@ -258,7 +258,7 @@
 	  		$id = $rows['id'];
 	  		$lastname = $rows['lastname'];
 	  	}?>
-	  		<input type="text" name="firstname" placeholder="First Name *" value="<?php echo $firstname ?>" disabled>
+	  		<input type="text" name="firstname" placeholder="First Name *" value="<?php echo $firstname; ?>" disabled>
 			<input type="text" name="lastname" placeholder="Last Name *" value="<?php echo $lastname; ?>" disabled>
 			<label>Upload Resume/CV</label>
 			<input type="file" name="fileTarget" required>
@@ -300,5 +300,113 @@
 				/>
 	  	<?php
 		  	include "server/errors.php";
+	}
+
+	function editProfile() {
+		include "db_conn.php"; 
+
+		if (empty($_SESSION)) {
+			session_start();
+		}
+
+		$firstname = $_SESSION["firstname"];
+
+		$sql_getUserId = "SELECT * FROM tbl_users WHERE firstname = '$firstname'";
+	  	$getUserId_query = mysqli_query($db, $sql_getUserId);
+
+	  	if ($rows = $getUserId_query->fetch_assoc()) {
+	  		$id = $rows['id'];
+	  		$lastname = $rows['lastname'];
+	  		$company = $rows['company'];
+	  		$salary = $rows['salary'];
+	  		$education = $rows['education'];
+	  		$experience = $rows['experience'];
+	  		$skills = $rows['skills'];
+	  		$profilePicture = $rows['profile_picture'];
+	  		$description = $rows['description'];
+	  	}
+	  	
+	  	if(isset($_POST['save'])) {
+	  		$fileExistsFlag = 0; 
+			$fileName = $_FILES['profilePicture']['name'];
+	  		$firstname = mysql_real_escape_string($_POST['firstname']);
+	  		$lastname = mysql_real_escape_string($_POST['lastname']);
+
+			$salary = mysql_real_escape_string($_POST['salary']);
+
+			if ($_SESSION['type'] == 'Employer') {
+				$company = mysql_real_escape_string($_POST['company']);	
+			}
+			
+			$education = mysql_real_escape_string($_POST['education']);
+			$experience = mysql_real_escape_string($_POST['experience']);
+	  		$skills = mysql_real_escape_string($_POST['skills']);
+	  		$description = mysql_real_escape_string($_POST['description']);
+
+	  		if($fileExistsFlag == 0) { 
+				$target = "files/";		
+				$fileTarget = $target.$fileName;
+				/*$tempFileName = $_FILES["profilePicture"]["tmp_name"];*/
+				$result = move_uploaded_file($tempFileName,$fileTarget);
+
+				if($result) { 
+					$sql_editProfilePic = "UPDATE tbl_users SET profile_picture='$tempFileName' WHERE id='$id'";
+			  		mysqli_query($db, $sql_editProfilePic);
+
+					$_SESSION['profile_picture'] = $image;
+
+
+			  		if (count($errors) == 0) {
+						array_push($errors, 'Upload Successful.');
+						include "server/errors.php";
+					}	
+				}
+			}
+
+			$sql_editProfile = "UPDATE tbl_users SET firstname='$firstname', lastname='$lastname', company='$company', education='$education', salary='$salary', experience='$experience', skills='$skills', description='$description' WHERE id='$id'";
+		  		mysqli_query($db, $sql_editProfile);
+		  		
+
+		  		if (count($errors) == 0) {
+					array_push($errors, 'You have successfully edited your profile.');
+					include "server/errors.php";
+				}
+	  		}
+	  	?>
+
+  		<form action="" method="post" enctype="multipart/form-data">
+  			<div class="photo">
+  				<?php if(empty($profilePicture)): ?>
+  					<img src="images/users.svg" alt="Profile Picture">
+  					<input id="file" type="file" name="profilePicture"/>
+  				<?php else: ?>
+  					
+  					
+  					<input id="file" type="file" name="profilePicture"/>
+  				<?php endif; ?>	
+  			</div>
+  			
+	  		<input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="First Name *" required/>
+	  		<input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="Last Name *" required/>
+	  		<?php if ($_SESSION['type'] == 'Employer'): ?>
+	    		<input type="text" name="company" value="<?php echo $company; ?>" placeholder="Company Name *" required/>
+	    	<?php else: ?>
+	    		<select name="education" required>
+	    			<option>Highschool Level</option>
+	    			<option>College Level</option>
+	    			<option>Bachelor's Degree</option>
+	    			<option>Master's Degree</option>
+	    		</select>
+	    		<input type="text" name="experience" value="<?php echo $experience; ?>" placeholder="Latest Job Title" />
+	    		<input type="text" name="salary" value="<?php echo $salary; ?>" placeholder="Expected Salary (e.g $4 per hr) *"/>
+	    		<label>Outline:</label>
+	    		<textarea placeholder="Tell us about yourself." name="description"><?php echo $description; ?></textarea>
+	    		<label>Skills:</label>
+	    		<textarea placeholder="Skills Acquired (separate by comma e.g CSS, HTML5, etc)" name="skills"><?php echo $skills; ?></textarea>
+    		<?php endif; ?>
+    		<button class="save-btn" type="submit" name="save">Save</button>
+    	</form>
+
+	  	<?php
 	}
 ?>

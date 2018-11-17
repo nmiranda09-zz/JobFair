@@ -148,6 +148,12 @@
 			    font-size: 16px;
 			    text-transform: uppercase;
 			    text-decoration: none;
+			    text-align: center;
+
+			    &.active {
+			    	font-family: @font-family-bold;
+			    	color: @main-color;
+			    }
 
 			    &:hover {
 			    	color: @main-color;
@@ -158,6 +164,88 @@
 		.right-column {
 			width: 70%;
 			background: @white;
+
+			.tab-content {
+				display: none;
+
+				&.show {
+					display: block;
+				}
+			}
+
+			.editprofile-container {
+				padding: 20px;
+
+				legend {
+					margin-bottom: 20px;
+					color: @torch-red;
+				}
+
+				h3 {
+					padding-bottom: 20px;
+					margin-bottom: 20px;
+					border-bottom: 1px solid @light-gray;
+					font-size: 30px;
+					font-family: @font-family-bold;
+					text-transform: uppercase;
+				}
+
+				form {
+					.flex-layout;
+					.flex-direction(column);
+
+					.photo {
+						img {
+							width: 100%;
+							max-width: 80px;
+						}
+
+						input[type="file"] {
+							display: block;
+							max-width: 250px;
+							margin: 10px 0 20px;
+						}
+					}
+
+					& > input,
+					select,
+					textarea {
+						margin-bottom: 20px;
+						padding: 10px 15px;
+						font-size: 16px;
+						font-family: @font-family-base;
+						border: 1px solid @border-color;
+
+						&:focus {
+							outline: none;
+							border-color: @main-color;
+						}
+					}
+
+					label {
+						display: inline-block;
+						margin-bottom: 5px;
+					}
+
+					textarea {
+						resize: none;
+						min-height: 150px;
+						overflow-y: auto;
+					}
+
+					.save-btn {
+						display: block;
+						max-width: 250px;
+						padding: 10px 15px;
+						margin-bottom: 30px;
+						border: 0;
+						background: @main-color;
+						color: @white;
+						font-family: @font-family-bold;
+						text-transform: uppercase;
+					}
+				}
+			}
 		}
 	}
 }

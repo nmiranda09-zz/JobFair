@@ -32,10 +32,11 @@
 				border: 1px solid @light-gray;
 
 				.photo {
-					max-width: 80px;
+					width: 20%;
 					margin-right: 20px;
 
 					img {
+						max-width: 80px;
 						width: 100%;
 					}
 				}
@@ -44,10 +45,15 @@
 					span {
 						display: block;
 						margin-bottom: 10px;
+						font-size: 16px;
 
 						&.name {
 							font-family: @font-family-bold;
 							font-size: 20px;
+						}
+
+						&.outline {
+							line-height: 1.3;
 						}
 					}
 

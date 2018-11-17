@@ -168,15 +168,26 @@ h6 {
   font-weight: normal;
 }
 .errors {
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   background: #ff191b;
   color: #fff;
   text-align: center;
 }
+.success {
+  margin: 0;
+}
+.success .errors {
+  background: green;
+}
 button,
 input[type='submit'] {
   cursor: pointer;
+}
+button:hover,
+input[type='submit']:hover {
+  opacity: 0.9;
 }
 header {
   display: -webkit-box;
@@ -583,6 +594,11 @@ footer p {
   font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
+}
+.account-index .page-wrapper .left-column a.active {
+  font-family: 'roboto_condensedbold';
+  color: #960898;
 }
 .account-index .page-wrapper .left-column a:hover {
   color: #960898;
@@ -590,6 +606,83 @@ footer p {
 .account-index .page-wrapper .right-column {
   width: 70%;
   background: #fff;
+}
+.account-index .page-wrapper .right-column .tab-content {
+  display: none;
+}
+.account-index .page-wrapper .right-column .tab-content.show {
+  display: block;
+}
+.account-index .page-wrapper .right-column .editprofile-container {
+  padding: 20px;
+}
+.account-index .page-wrapper .right-column .editprofile-container legend {
+  margin-bottom: 20px;
+  color: #ff191b;
+}
+.account-index .page-wrapper .right-column .editprofile-container h3 {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 30px;
+  font-family: 'roboto_condensedbold';
+  text-transform: uppercase;
+}
+.account-index .page-wrapper .right-column .editprofile-container form {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+.account-index .page-wrapper .right-column .editprofile-container form .photo img {
+  width: 100%;
+  max-width: 80px;
+}
+.account-index .page-wrapper .right-column .editprofile-container form .photo input[type="file"] {
+  display: block;
+  max-width: 250px;
+  margin: 10px 0 20px;
+}
+.account-index .page-wrapper .right-column .editprofile-container form > input,
+.account-index .page-wrapper .right-column .editprofile-container form select,
+.account-index .page-wrapper .right-column .editprofile-container form textarea {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: 'roboto_condensedregular';
+  border: 1px solid #bbb8b8;
+}
+.account-index .page-wrapper .right-column .editprofile-container form > input:focus,
+.account-index .page-wrapper .right-column .editprofile-container form select:focus,
+.account-index .page-wrapper .right-column .editprofile-container form textarea:focus {
+  outline: none;
+  border-color: #960898;
+}
+.account-index .page-wrapper .right-column .editprofile-container form label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.account-index .page-wrapper .right-column .editprofile-container form textarea {
+  resize: none;
+  min-height: 150px;
+  overflow-y: auto;
+}
+.account-index .page-wrapper .right-column .editprofile-container form .save-btn {
+  display: block;
+  max-width: 250px;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+  border: 0;
+  background: #960898;
+  color: #fff;
+  font-family: 'roboto_condensedbold';
+  text-transform: uppercase;
 }
 .jobseekers-index header {
   border-bottom: 1px solid #e1e1e1;
@@ -629,19 +722,24 @@ footer p {
   border: 1px solid #e1e1e1;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .photo {
-  max-width: 80px;
+  width: 20%;
   margin-right: 20px;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .photo img {
+  max-width: 80px;
   width: 100%;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .info span {
   display: block;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .info span.name {
   font-family: 'roboto_condensedbold';
   font-size: 20px;
+}
+.jobseekers-index .page-wrapper .left-column .jobseeker .info span.outline {
+  line-height: 1.3;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .info button {
   -moz-border-radius: 5px;
