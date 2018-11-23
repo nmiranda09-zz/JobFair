@@ -6,8 +6,6 @@
 	}
 
 	.page-wrapper {
-		.flex-layout;
-
 		.left-column {
 			width: 70%;
 			margin-right: 30px;
@@ -19,6 +17,7 @@
 			}
 
 			.jobseekers-container {
+				.custom-scrollbar();
 				max-height: 500px;
 				overflow-y: auto;
 				padding-right: 10px;
@@ -36,16 +35,32 @@
 					margin-right: 20px;
 
 					img {
-						max-width: 80px;
 						width: 100%;
 					}
 				}
 
 				.info {
-					span {
+					width: 80%;
+
+					label {
 						display: block;
+					    margin-bottom: 10px;
+					    padding-bottom: 5px;
+					    border-bottom: 1px solid @light-gray;
+					    font-size: 14px;
+					}
+					
+					span {
+						.flex-layout;
+						.flex-align(center);
 						margin-bottom: 10px;
 						font-size: 16px;
+
+
+						& > img {
+							max-width: 20px;
+							margin-right: 5px;
+						}
 
 						&.name {
 							font-family: @font-family-bold;
@@ -61,6 +76,7 @@
 						.round-borders(5px);
 						width: 100%;
 						max-width: 150px;
+						margin-top: 15px;
 						padding: 12px;
 						background: @main-color;
 						border: 0;
@@ -85,6 +101,7 @@
 			}
 
 			.jobpost-container {
+				.custom-scrollbar();
 			    max-height: 500px;
 			    overflow-y: auto;
 			    border: 1px solid @light-gray;
@@ -99,6 +116,12 @@
 				padding: 20px;
 				border-bottom: 1px solid @light-gray;
 
+				& > div:not(:last-child) {
+					margin-bottom: 10px;
+					padding-bottom: 10px;
+					border-bottom: 1px solid @light-gray;
+				}
+
 				&:last-child {
 					border-bottom: 0;
 				}
@@ -108,6 +131,16 @@
 					margin-bottom: 10px;
 					font-size: 16px;
 					font-family: @font-family-light;
+
+					&.date {
+						.flex-layout;
+						.flex-align(center);
+
+						img {
+							max-width: 20px;
+							margin-right: 5px;
+						}
+					}
 				}
 
 				button {

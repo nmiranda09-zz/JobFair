@@ -17,7 +17,7 @@
 		            	include "server/functions.php";
 		            	login();
 		            ?>
-		            <input type="text" name="username" placeholder="Username *" required>
+		            <input type="text" name="username" placeholder="Username *" required autofocus>
 		            <input type="password" name="password" placeholder="Password *" required>
 		            <input class="login-btn" type="submit" value="login" name="login">
 		        </form>

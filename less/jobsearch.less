@@ -26,8 +26,7 @@
 			button {
 				.round-borders(5px);
 				display: block;
-				width: 100%;
-				padding: 12px;
+				padding: 12px 15px;
 				border: 0;
 				background: @mine-shaft;
 				color: @white;
@@ -49,6 +48,7 @@
 			}
 
 			.search-container {
+				.custom-scrollbar();
 				max-height: 500px;
 				overflow-y: auto;
 				padding-right: 10px;
@@ -121,6 +121,7 @@
 			}
 
 			.jobpost-container {
+				.custom-scrollbar();
 			    max-height: 500px;
 			    overflow-y: auto;
 			    border: 1px solid @light-gray;
@@ -131,7 +132,7 @@
 			    }
 			}
 
-			.jobpost {
+			.applications {
 				padding: 20px;
 				border-bottom: 1px solid @light-gray;
 
@@ -139,21 +140,20 @@
 					border-bottom: 0;
 				}
 
+				a {
+					display: inline-block;
+					margin-bottom: 10px;
+					color: @mine-shaft;
+					font-size: 16px;
+					font-family: @font-family-bold;
+				}
+
 				span {
 					display: block;
 					margin-bottom: 10px;
-					font-size: 16px;
-					font-family: @font-family-light;
-				}
-
-				button {
-					background: none;
-					border: 0;
-					color: @main-color;
-					text-decoration: underline;
+					font-size: 12px;
 				}
 			}
-
 		}
 	}
 }

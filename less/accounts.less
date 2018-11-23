@@ -3,10 +3,6 @@
 .login-index,
 .register-index,
 .jobpost-index {
-	.page-main {
-		background: @light-gray;
-	}
-
 	header {
 		.account-container {
 
@@ -19,8 +15,6 @@
 	}
 
 	.page-wrapper {
-		padding: 50px 25px;
-
 		.inner-wrapper {
 			.flex-layout;
 			padding: 50px;
@@ -137,27 +131,34 @@
 			    font-size: 25px;
 			    text-transform: uppercase;
 			    text-align: center;
-			    
 			}
 
-			a {
-				display: block;
-				padding: 20px;
-			    color: @mine-shaft;
-			    border-bottom: 1px solid @light-gray;
-			    font-size: 16px;
-			    text-transform: uppercase;
-			    text-decoration: none;
-			    text-align: center;
+			.tab-list {
+				li {
+					&:last-child a {
+				    	border-bottom: 0;
+				    }
 
-			    &.active {
-			    	font-family: @font-family-bold;
-			    	color: @main-color;
-			    }
+					a {
+						display: block;
+						padding: 20px;
+						border-bottom: 1px solid @light-gray;
+					    color: @mine-shaft;
+					    font-size: 16px;
+					    text-transform: uppercase;
+					    text-decoration: none;
+					    text-align: center;
 
-			    &:hover {
-			    	color: @main-color;
-			   	}
+					    &.active {
+					    	font-family: @font-family-bold;
+					    	color: @main-color;
+					    }
+
+					    &:hover {
+					    	color: @main-color;
+					   	}
+					}
+				}
 			}
 		}
 
@@ -167,19 +168,7 @@
 
 			.tab-content {
 				display: none;
-
-				&.show {
-					display: block;
-				}
-			}
-
-			.editprofile-container {
 				padding: 20px;
-
-				legend {
-					margin-bottom: 20px;
-					color: @torch-red;
-				}
 
 				h3 {
 					padding-bottom: 20px;
@@ -190,6 +179,17 @@
 					text-transform: uppercase;
 				}
 
+				&.show {
+					display: block;
+				}
+			}
+
+			.editprofile-container {
+				legend {
+					margin-bottom: 20px;
+					color: @torch-red;
+				}
+
 				form {
 					.flex-layout;
 					.flex-direction(column);
@@ -197,7 +197,7 @@
 					.photo {
 						img {
 							width: 100%;
-							max-width: 80px;
+							max-width: 200px;
 						}
 
 						input[type="file"] {
@@ -243,6 +243,110 @@
 						color: @white;
 						font-family: @font-family-bold;
 						text-transform: uppercase;
+					}
+				}
+			}
+
+			.jobposted-container {
+				.custom-scrollbar();
+				max-height: 400px;
+				overflow-y: auto;
+				
+				& > div {
+					margin-bottom: 20px;
+
+					&:not(:last-child) {
+						padding-bottom: 20px;
+						border-bottom: 1px solid @light-gray
+					}
+					
+					span {
+						display: block;
+						margin-bottom: 10px;
+						font-size: 15px;
+
+						&.title {
+							font-size: 18px;
+							font-family: @font-family-bold;
+						}
+
+						&.date {
+							.flex-layout;
+							.flex-align(center);
+
+							img {
+								max-width: 20px;
+								margin-right: 5px;
+							}
+						}
+					}
+
+					a {
+						font-family: @font-family-bold;
+						color: @main-color;
+
+						&:hover {
+							color: lighten(@main-color, 5%);
+						}
+					}
+				}
+			}
+
+			.messagebox-container {
+				.custom-scrollbar();
+				max-height: 400px;
+				overflow-y: auto;
+
+				.messages:not(:last-child) {
+					margin-bottom: 20px;
+					padding-bottom: 20px;
+					border-bottom: 1px solid @light-gray
+				}
+
+				span {
+					font-size: 20px;
+					font-family: @font-family-light;
+					text-transform: uppercase;
+				}
+
+				a {
+					font-size: 20px;
+					font-family: @font-family-bold;
+					color: @mine-shaft;
+				}
+
+				.name {
+					display: block;
+					margin-top: 10px;
+					font-size: 14px;
+					font-family: @font-family-base;
+				}
+			}
+
+			.applications-container {
+				.custom-scrollbar();
+				max-height: 400px;
+    			overflow-y: auto;
+
+				.applications {
+					&:not(:last-child) {
+						padding-bottom: 20px;
+						margin-bottom: 20px;
+						border-bottom: 1px solid @light-gray;
+					}
+
+					a {
+						display: inline-block;
+						margin-bottom: 15px;
+						font-size: 18px;
+						font-family: @font-family-bold;
+						color: @mine-shaft;
+					}
+
+					span {
+						display: block;
+						margin-bottom: 10px;
+						font-size: 15px;
 					}
 				}
 			}

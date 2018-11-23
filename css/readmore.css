@@ -1,4 +1,8 @@
-.description-index .jobpost .applyform-container {
+.description-index .job-description {
+  background: #fff;
+  padding: 20px;
+}
+.description-index .job-description .applyform-container {
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -11,18 +15,18 @@
   background-color: #000000;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.description-index .jobpost .applyform-container form {
+.description-index .job-description .applyform-container form {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
 }
-.description-index .jobpost .applyform-container form legend {
+.description-index .job-description .applyform-container form legend {
   color: #ff191b;
   margin-bottom: 20px;
 }
-.description-index .jobpost .applyform-container form h3 {
+.description-index .job-description .applyform-container form h3 {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -37,15 +41,15 @@
   font-size: 50px;
   text-transform: uppercase;
 }
-.description-index .jobpost .applyform-container form h3 img {
+.description-index .job-description .applyform-container form h3 img {
   max-width: 50px;
   margin-left: 5px;
 }
-.description-index .jobpost .applyform-container form label {
+.description-index .job-description .applyform-container form label {
   display: block;
   margin-bottom: 10px;
 }
-.description-index .jobpost .applyform-container form input:not([type="file"]) {
+.description-index .job-description .applyform-container form input[type="text"] {
   display: block;
   width: 100%;
   margin-bottom: 20px;
@@ -53,36 +57,39 @@
   font-family: 'roboto_condensedregular';
   font-size: 16px;
 }
-.description-index .jobpost .applyform-container form .apply-btn {
+.description-index .job-description .applyform-container form .apply-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
   margin-top: 20px;
   border: 0;
   background: #960898;
   color: #fff;
   text-transform: uppercase;
 }
-.description-index .jobpost .applyform-container form .apply-btn:hover {
+.description-index .job-description .applyform-container form .apply-btn:hover {
   background: #ae09b0;
 }
-.description-index .jobpost .applyform-container .close-btn {
+.description-index .job-description .applyform-container .close-btn {
   float: right;
   margin: 0;
   cursor: pointer;
 }
-.description-index .jobpost .applyform-container .close-btn:hover {
+.description-index .job-description .applyform-container .close-btn:hover {
   opacity: 0.9;
 }
-.description-index .jobpost .applyform-container .close-btn img {
+.description-index .job-description .applyform-container .close-btn img {
   margin: 0;
   max-width: 20px;
   width: 100%;
 }
-.description-index .jobpost h1 {
+.description-index .job-description h1 {
   display: block;
   font-family: 'roboto_condensedbold';
   font-size: 40px;
   margin-bottom: 30px;
 }
-.description-index .jobpost div {
+.description-index .job-description div {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -92,10 +99,10 @@
   -o-align-items: center;
   align-items: center;
 }
-.description-index .jobpost div:not(.actions) {
+.description-index .job-description div:not(.actions) {
   margin-bottom: 20px;
 }
-.description-index .jobpost div:not(.actions) span {
+.description-index .job-description div:not(.actions) span {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -107,28 +114,28 @@
   font-size: 20px;
   margin-right: 20px;
 }
-.description-index .jobpost div:not(.actions) span:last-child {
+.description-index .job-description div:not(.actions) span:last-child {
   margin-right: 0;
 }
-.description-index .jobpost div:not(.actions) span img {
+.description-index .job-description div:not(.actions) span img {
   max-width: 25px;
 }
-.description-index .jobpost label {
+.description-index .job-description label {
   font-family: 'roboto_condensedbold';
   font-size: 18px;
   text-transform: uppercase;
 }
-.description-index .jobpost span {
+.description-index .job-description span {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
 }
-.description-index .jobpost span img {
+.description-index .job-description span img {
   width: 100%;
   max-width: 18px;
   margin-right: 5px;
 }
-.description-index .jobpost span.category {
+.description-index .job-description span.category {
   display: inline-block;
   padding: 10px;
   margin-bottom: 8px;
@@ -139,19 +146,19 @@
   text-transform: uppercase;
   text-align: center;
 }
-.description-index .jobpost span.description {
+.description-index .job-description span.description {
   margin-top: 8px;
   font-size: 23px;
   font-family: 'roboto_condensedlight';
   line-height: 1.3;
 }
-.description-index .jobpost .actions {
+.description-index .job-description .actions {
   margin-top: 30px;
 }
-.description-index .jobpost .actions .readmore-btn.active + .applyform-container {
+.description-index .job-description .actions .readmore-btn.active + .applyform-container {
   display: block;
 }
-.description-index .jobpost button {
+.description-index .job-description button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -162,16 +169,10 @@
   background: #960898;
   border: 0;
   color: #fff;
-  font-family: 'roboto_condenseditalic';
-  text-transform: uppercase;
-  text-align: center;
   text-decoration: none;
   line-height: 1;
   margin-right: 20px;
 }
-.description-index .jobpost button:hover {
-  background: #ae09b0;
-}
-.description-index .jobpost button:focus {
-  outline: none;
+.description-index .job-description button:last-of-type {
+  margin-right: 0;
 }

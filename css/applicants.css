@@ -1,0 +1,120 @@
+.applicants-container h1 {
+  display: block;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-family: 'roboto_condensedregular';
+  text-transform: uppercase;
+}
+.applicants-container h1 b {
+  font-family: 'roboto_condensedbold';
+}
+.applicants-container .back-btn {
+  margin-bottom: 20px;
+  background: none;
+  border: 0;
+  font-family: 'roboto_condensedbold';
+}
+.applicants-container .back-btn .fa {
+  margin-right: 5px;
+}
+.applicants-container .back-btn:hover {
+  color: #960898;
+}
+.applicants-container .back-btn:focus {
+  outline: none;
+}
+.applicants-container .jobseeker {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+}
+.applicants-container .jobseeker .photo {
+  width: 20%;
+  margin-right: 20px;
+}
+.applicants-container .jobseeker .photo img {
+  width: 100%;
+}
+.applicants-container .jobseeker .info {
+  width: 80%;
+}
+.applicants-container .jobseeker .info > div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin: 15px 0;
+}
+.applicants-container .jobseeker .info > div.top-info {
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+  margin: 0 0 20px;
+}
+.applicants-container .jobseeker .info > div.top-info form {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.applicants-container .jobseeker .info > div.actions a {
+  margin-right: 20px;
+}
+.applicants-container .jobseeker .info label {
+  display: block;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 14px;
+}
+.applicants-container .jobseeker .info span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 16px;
+}
+.applicants-container .jobseeker .info span > img {
+  max-width: 20px;
+  margin-right: 5px;
+}
+.applicants-container .jobseeker .info span.name {
+  font-family: 'roboto_condensedbold';
+  font-size: 20px;
+}
+.applicants-container .jobseeker .info span.outline {
+  line-height: 1.3;
+}
+.applicants-container .jobseeker .info select {
+  padding: 12px 15px;
+}
+.applicants-container .jobseeker .info select:focus {
+  outline: none;
+}
+.applicants-container .jobseeker .info button {
+  width: 100%;
+  max-width: 150px;
+  padding: 12px 15px;
+  background: #960898;
+  border: 0;
+  color: #fff;
+  font-family: 'roboto_condenseditalic';
+  text-transform: uppercase;
+}

@@ -3,16 +3,18 @@
 	login();
 	register(); 
 
+	$idCheck = $_SESSION['id'];
 ?>
+<?php if($idCheck != ""): ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>My Account - JobFair</title>
-	<?php include "meta.php" ?>
+	<?php include "meta.php"; ?>
 </head>
 <body class="account-index">
-	<?php include "header.php" ?>
+	<?php include "header.php"; ?>
 
 	<div class="page-main">
 	    <div class="page-wrapper">
@@ -31,31 +33,34 @@
 				    
 				    <li><a class="tab" href="#messages">Messages</a></li>
 				  </ul>
-				  
-	    		
 	    		</div>
 	    	</div>
 
 	    	<div class="right-column">
 	    		<div class="tab-content show" id="profile">
-				    <?php include "info.php"; ?>
+				    <?php include "editprofile.php"; ?>
 				</div>
 				
 				<?php if ($_SESSION['type'] == 'Employer'): ?>
 					<div class="tab-content" id="jobposts">
 					  	 <h3>Job Posts</h3>
-					    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+					     
+					     <?php include "jobposted.php"; ?>
 					</div>
 				<?php else: ?>
 					<div class="tab-content" id="applications">
 					  	 <h3>Applications</h3>
-					    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+					  	 <div class="applications-container">
+					     	<?php applications(); ?>
+					     </div>
 					</div>
 				<?php endif; ?>	
 				
 				<div class="tab-content" id="messages">
 				  	 <h3>Messages</h3>
-				    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+				  	 <div class="messagebox-container">
+				  	 	<?php messages(); ?>
+				  	 </div>
 				  </div>
 				</div>
 	    	</div>
@@ -65,22 +70,6 @@
 	<?php include "footer.php" ?>
 </body>
 </html>
-
-<script>
-	/*function openTabs(evt, tabName) {
-	    var i, tabcontent, tablinks;
-
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        $(tabcontent[i]).css('display', 'none');
-	    }
-
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace("active", "");
-	    }
-
-	    document.getElementById(tabName).style.display = "block";
-	    evt.currentTarget.className += " active";
-	}*/
-</script>
+<?php else: ?>
+	<?php header('location: login.php'); ?>
+<?php endif; ?>

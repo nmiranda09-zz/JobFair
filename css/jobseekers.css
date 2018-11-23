@@ -1,13 +1,6 @@
 .jobseekers-index header {
   border-bottom: 1px solid #e1e1e1;
 }
-.jobseekers-index .page-wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
 .jobseekers-index .page-wrapper .left-column {
   width: 70%;
   margin-right: 30px;
@@ -21,6 +14,19 @@
   max-height: 500px;
   overflow-y: auto;
   padding-right: 10px;
+}
+.jobseekers-index .page-wrapper .left-column .jobseekers-container::-webkit-scrollbar {
+  width: 6px;
+}
+.jobseekers-index .page-wrapper .left-column .jobseekers-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.jobseekers-index .page-wrapper .left-column .jobseekers-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker {
   display: -webkit-box;
@@ -40,13 +46,33 @@
   margin-right: 20px;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .photo img {
-  max-width: 80px;
   width: 100%;
 }
-.jobseekers-index .page-wrapper .left-column .jobseeker .info span {
+.jobseekers-index .page-wrapper .left-column .jobseeker .info {
+  width: 80%;
+}
+.jobseekers-index .page-wrapper .left-column .jobseeker .info label {
   display: block;
   margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 14px;
+}
+.jobseekers-index .page-wrapper .left-column .jobseeker .info span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  margin-bottom: 10px;
   font-size: 16px;
+}
+.jobseekers-index .page-wrapper .left-column .jobseeker .info span > img {
+  max-width: 20px;
+  margin-right: 5px;
 }
 .jobseekers-index .page-wrapper .left-column .jobseeker .info span.name {
   font-family: 'roboto_condensedbold';
@@ -61,6 +87,7 @@
   border-radius: 5px;
   width: 100%;
   max-width: 150px;
+  margin-top: 15px;
   padding: 12px;
   background: #960898;
   border: 0;
@@ -84,12 +111,30 @@
   overflow-y: auto;
   border: 1px solid #e1e1e1;
 }
+.jobseekers-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar {
+  width: 6px;
+}
+.jobseekers-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.jobseekers-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
+}
 .jobseekers-index .page-wrapper .right-column .jobpost-container:first-of-type,
 .jobseekers-index .page-wrapper .right-column .jobpost-container:only-of-type {
   border-top: 0;
 }
 .jobseekers-index .page-wrapper .right-column .jobpost {
   padding: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.jobseekers-index .page-wrapper .right-column .jobpost > div:not(:last-child) {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #e1e1e1;
 }
 .jobseekers-index .page-wrapper .right-column .jobpost:last-child {
@@ -100,6 +145,20 @@
   margin-bottom: 10px;
   font-size: 16px;
   font-family: 'roboto_condensedlight';
+}
+.jobseekers-index .page-wrapper .right-column .jobpost span.date {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.jobseekers-index .page-wrapper .right-column .jobpost span.date img {
+  max-width: 20px;
+  margin-right: 5px;
 }
 .jobseekers-index .page-wrapper .right-column .jobpost button {
   background: none;

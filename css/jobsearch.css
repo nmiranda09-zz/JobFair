@@ -33,8 +33,7 @@
   -webkit-border-radius: 5px;
   border-radius: 5px;
   display: block;
-  width: 100%;
-  padding: 12px;
+  padding: 12px 15px;
   border: 0;
   background: #212121;
   color: #fff;
@@ -55,6 +54,19 @@
   max-height: 500px;
   overflow-y: auto;
   padding-right: 10px;
+}
+.jobsearch-index .page-wrapper .left-column .search-container::-webkit-scrollbar {
+  width: 6px;
+}
+.jobsearch-index .page-wrapper .left-column .search-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.jobsearch-index .page-wrapper .left-column .search-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
 }
 .jobsearch-index .page-wrapper .left-column .jobpost {
   -moz-border-radius: 5px;
@@ -118,26 +130,39 @@
   overflow-y: auto;
   border: 1px solid #e1e1e1;
 }
+.jobsearch-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar {
+  width: 6px;
+}
+.jobsearch-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.jobsearch-index .page-wrapper .right-column .jobpost-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
+}
 .jobsearch-index .page-wrapper .right-column .jobpost-container:first-of-type,
 .jobsearch-index .page-wrapper .right-column .jobpost-container:only-of-type {
   border-top: 0;
 }
-.jobsearch-index .page-wrapper .right-column .jobpost {
+.jobsearch-index .page-wrapper .right-column .applications {
   padding: 20px;
   border-bottom: 1px solid #e1e1e1;
 }
-.jobsearch-index .page-wrapper .right-column .jobpost:last-child {
+.jobsearch-index .page-wrapper .right-column .applications:last-child {
   border-bottom: 0;
 }
-.jobsearch-index .page-wrapper .right-column .jobpost span {
+.jobsearch-index .page-wrapper .right-column .applications a {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #212121;
+  font-size: 16px;
+  font-family: 'roboto_condensedbold';
+}
+.jobsearch-index .page-wrapper .right-column .applications span {
   display: block;
   margin-bottom: 10px;
-  font-size: 16px;
-  font-family: 'roboto_condensedlight';
-}
-.jobsearch-index .page-wrapper .right-column .jobpost button {
-  background: none;
-  border: 0;
-  color: #960898;
-  text-decoration: underline;
+  font-size: 12px;
 }

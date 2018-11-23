@@ -1,19 +1,9 @@
-.login-index .page-main,
-.register-index .page-main,
-.jobpost-index .page-main {
-  background: #e1e1e1;
-}
 .login-index header .account-container a:last-child,
 .register-index header .account-container a:last-child,
 .jobpost-index header .account-container a:last-child {
   margin-right: 0;
   padding-right: 0;
   border-right: 0;
-}
-.login-index .page-wrapper,
-.register-index .page-wrapper,
-.jobpost-index .page-wrapper {
-  padding: 50px 25px;
 }
 .login-index .page-wrapper .inner-wrapper,
 .register-index .page-wrapper .inner-wrapper,
@@ -156,21 +146,24 @@
   text-transform: uppercase;
   text-align: center;
 }
-.account-index .page-wrapper .left-column a {
+.account-index .page-wrapper .left-column .tab-list li:last-child a {
+  border-bottom: 0;
+}
+.account-index .page-wrapper .left-column .tab-list li a {
   display: block;
   padding: 20px;
-  color: #212121;
   border-bottom: 1px solid #e1e1e1;
+  color: #212121;
   font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
 }
-.account-index .page-wrapper .left-column a.active {
+.account-index .page-wrapper .left-column .tab-list li a.active {
   font-family: 'roboto_condensedbold';
   color: #960898;
 }
-.account-index .page-wrapper .left-column a:hover {
+.account-index .page-wrapper .left-column .tab-list li a:hover {
   color: #960898;
 }
 .account-index .page-wrapper .right-column {
@@ -179,24 +172,22 @@
 }
 .account-index .page-wrapper .right-column .tab-content {
   display: none;
-}
-.account-index .page-wrapper .right-column .tab-content.show {
-  display: block;
-}
-.account-index .page-wrapper .right-column .editprofile-container {
   padding: 20px;
 }
-.account-index .page-wrapper .right-column .editprofile-container legend {
-  margin-bottom: 20px;
-  color: #ff191b;
-}
-.account-index .page-wrapper .right-column .editprofile-container h3 {
+.account-index .page-wrapper .right-column .tab-content h3 {
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #e1e1e1;
   font-size: 30px;
   font-family: 'roboto_condensedbold';
   text-transform: uppercase;
+}
+.account-index .page-wrapper .right-column .tab-content.show {
+  display: block;
+}
+.account-index .page-wrapper .right-column .editprofile-container legend {
+  margin-bottom: 20px;
+  color: #ff191b;
 }
 .account-index .page-wrapper .right-column .editprofile-container form {
   display: -webkit-box;
@@ -212,7 +203,7 @@
 }
 .account-index .page-wrapper .right-column .editprofile-container form .photo img {
   width: 100%;
-  max-width: 80px;
+  max-width: 200px;
 }
 .account-index .page-wrapper .right-column .editprofile-container form .photo input[type="file"] {
   display: block;
@@ -253,4 +244,130 @@
   color: #fff;
   font-family: 'roboto_condensedbold';
   text-transform: uppercase;
+}
+.account-index .page-wrapper .right-column .jobposted-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.account-index .page-wrapper .right-column .jobposted-container::-webkit-scrollbar {
+  width: 6px;
+}
+.account-index .page-wrapper .right-column .jobposted-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.account-index .page-wrapper .right-column .jobposted-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div {
+  margin-bottom: 20px;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div:not(:last-child) {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div span.title {
+  font-size: 18px;
+  font-family: 'roboto_condensedbold';
+}
+.account-index .page-wrapper .right-column .jobposted-container > div span.date {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div span.date img {
+  max-width: 20px;
+  margin-right: 5px;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div a {
+  font-family: 'roboto_condensedbold';
+  color: #960898;
+}
+.account-index .page-wrapper .right-column .jobposted-container > div a:hover {
+  color: #ae09b0;
+}
+.account-index .page-wrapper .right-column .messagebox-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.account-index .page-wrapper .right-column .messagebox-container::-webkit-scrollbar {
+  width: 6px;
+}
+.account-index .page-wrapper .right-column .messagebox-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.account-index .page-wrapper .right-column .messagebox-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
+}
+.account-index .page-wrapper .right-column .messagebox-container .messages:not(:last-child) {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.account-index .page-wrapper .right-column .messagebox-container span {
+  font-size: 20px;
+  font-family: 'roboto_condensedlight';
+  text-transform: uppercase;
+}
+.account-index .page-wrapper .right-column .messagebox-container a {
+  font-size: 20px;
+  font-family: 'roboto_condensedbold';
+  color: #212121;
+}
+.account-index .page-wrapper .right-column .messagebox-container .name {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: 'roboto_condensedregular';
+}
+.account-index .page-wrapper .right-column .applications-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.account-index .page-wrapper .right-column .applications-container::-webkit-scrollbar {
+  width: 6px;
+}
+.account-index .page-wrapper .right-column .applications-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: #b6b6b6;
+}
+.account-index .page-wrapper .right-column .applications-container::-webkit-scrollbar-track {
+  border: 2px solid #fff;
+  background: #c3c3c3;
+}
+.account-index .page-wrapper .right-column .applications-container .applications:not(:last-child) {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.account-index .page-wrapper .right-column .applications-container .applications a {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: 'roboto_condensedbold';
+  color: #212121;
+}
+.account-index .page-wrapper .right-column .applications-container .applications span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
 }

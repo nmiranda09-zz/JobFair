@@ -1,0 +1,124 @@
+@import "variable.less";
+
+.applicants-container {
+	h1 {
+		display: block;
+		margin-bottom: 30px;
+		font-size: 30px;
+		font-family: @font-family-base;
+		text-transform: uppercase;
+
+		b {
+			font-family: @font-family-bold;
+		}
+	}
+
+	.back-btn {
+		margin-bottom: 20px;
+		background: none;
+		border: 0;
+		font-family: @font-family-bold;
+
+		.fa {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			color: @main-color;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.jobseeker {
+		.flex-layout;
+		.round-borders(5px);
+		margin-bottom: 20px;
+		padding: 20px;
+		border: 1px solid @light-gray;
+
+		.photo {
+			width: 20%;
+			margin-right: 20px;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.info {
+			width: 80%;
+
+			& > div {
+				.flex-layout;
+				margin: 15px 0;
+
+				&.top-info {
+					.flex-justify-content(space-between);
+					margin: 0 0 20px;
+
+					form {
+						.flex-layout;
+					}
+				}
+
+				&.actions {
+					a {
+						margin-right: 20px;
+					}
+				}
+			}
+
+			label {
+				display: block;
+			    margin-bottom: 10px;
+			    padding-bottom: 5px;
+			    border-bottom: 1px solid @light-gray;
+			    font-size: 14px;
+			}
+			
+			span {
+				.flex-layout;
+				.flex-align(center);
+				margin-right: 15px;
+				font-size: 16px;
+
+
+				& > img {
+					max-width: 20px;
+					margin-right: 5px;
+				}
+
+				&.name {
+					font-family: @font-family-bold;
+					font-size: 20px;
+				}
+
+				&.outline {
+					line-height: 1.3;
+				}
+			}
+
+			select {
+				padding: 12px 15px;
+
+				&:focus {
+					outline: none;
+				}
+			}
+
+			button {
+				width: 100%;
+				max-width: 150px;
+				padding: 12px 15px;
+				background: @main-color;
+				border: 0;
+				color: @white;
+				font-family: @font-family-italic;
+				text-transform: uppercase;
+			}
+		}
+	}
+}

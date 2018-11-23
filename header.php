@@ -1,3 +1,7 @@
+<div class="loader-container">
+	<div class="loader"></div>
+</div>
+
 <header>
 	<div class="logo-container">
 		<a href="index.php">

@@ -29,7 +29,7 @@
 		text-align: center;
 	}
 
-	.search-container {
+	.search-container form {
 		.flex-layout;
 		.flex-justify-content(center);
 		margin: 40px 0 20px;
@@ -64,53 +64,101 @@
 			color: @white;
 			font-family: @font-family-italic;
 			text-transform: uppercase;
+
+			&:hover {
+				opacity: 1;
+				background: lighten(@main-color, 5%);
+			}
 		}
 	}
-
-
 }
 
-.recent-job-listing-container {
-	margin: 30px 25px;
+.job-category-list {
+	margin-bottom: 30px;
 	padding: 20px;
 	background: @white;
 
 	strong {
-		display: inline-block;
-		margin-bottom: 20px;
+		display: block;
+		margin: 20px 0 50px;
 		font-size: 25px;
+		font-family: @font-family-bold;
 		text-transform: uppercase;
+		text-align: center;
 	}
 
-	ul {
-		li {
-			margin-bottom: 10px;
+	.categories-container {
+		.flex-layout;
+		.flex-wrap(wrap);
+		.flex-justify-content(center);
 
-			&:last-child {
-				margin-bottom: 0;
+		.categories {
+			width: 30%;
+			margin-left: 20px;
+			margin-bottom: 20px;
+			background: #f7f4f4;
+
+			&:nth-child(3n + 1) {
+				margin-left: 0;
 			}
 
-			a {
-				font-size: 16px;
-				color: @mine-shaft;
-				text-decoration: none;
+			& > div {
+				padding: 15px 10px 10px;
+				text-align: center;
 
-				&:hover {
-					color: @main-color;
+				img {
+					max-width: 50px;
+					margin: 0 auto;
+				}
+
+				span {
+					display: block;
+					margin-bottom: 10px;
+
+					&:first-of-type {
+						margin-top: 10px;
+						font-size: 18px;
+						font-family: @font-family-bold;
+						text-transform: uppercase;
+					}
+
+					&:last-of-type {
+						font-size: 14px;
+						color: @gray;
+					}
 				}
 			}
+
+			.see-all-btn {
+				.flex-layout;
+				.flex-align(center);
+				.flex-justify-content(center);
+				padding: 10px;
+				margin-top: 20px;
+				background: @gray;
+				color: @white;
+				font-family: @font-family-bold;
+				text-decoration: none;
+				text-transform: uppercase;
+
+				.fa-caret-right:before {
+					margin-left: 5px;
+					vertical-align: middle;
+				}
+
+				&:hover {
+					background: lighten(@gray, 5%);
+				}
+			}
+
+			
 		}
 	}
 
-	.see-all-btn {
-		display: inline-block;
-		margin-top: 20px;
-		color: @torch-red;
-	}
+	
 }
 
 .top-employers-container {
-	margin: 30px 25px;
 	padding: 20px;
 	background: @white;
 

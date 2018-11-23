@@ -2,8 +2,10 @@
 	include "server/functions.php"; 
 	register();
 	login();
-?>
 
+	$idCheck = $_SESSION['id'];
+?>
+<?php if($idCheck != ""): ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +17,19 @@
 
 	<div class="page-main">
 		<div class="page-wrapper">
-			<?php description(); ?>
+			<div class="job-description">
+				<?php description(); ?>
+
+				<div class="actions">
+    				<?php applyForm(); ?>
+    			</div>
+			</div>
 		</div>
 	</div>
 
 	<?php include "footer.php" ?>
 </body>
 </html>
+<?php else: ?>
+	<?php header('location: login.php'); ?>
+<?php endif; ?>

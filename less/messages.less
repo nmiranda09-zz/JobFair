@@ -1,0 +1,283 @@
+@import "variable.less";
+
+.sendmsg-container {
+	.back-btn {
+		display: inline-block;
+		margin-bottom: 20px;
+		background: none;
+		border: 0;
+		font-family: @font-family-bold;
+
+		.fa {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			color: @main-color;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	h3 {
+		margin-bottom: 20px;
+		font-family: @font-family-light;
+		font-size: 30px;
+		text-transform: uppercase;
+
+		b {
+			font-family: @font-family-bold;
+		}
+	}
+
+	legend {
+		color: @torch-red;
+		margin-bottom: 20px;
+	}
+
+	form {
+		.flex-layout;
+		.flex-direction(column);
+		width: 100%;
+		max-width: 500px;
+
+		input[type="text"],
+		textarea {
+			padding: 10px 15px;
+			margin-bottom: 20px;
+			font-family: @font-family-base;
+			font-size: 16px;
+
+			&:focus {
+				outline: none;
+				border-color: @main-color;
+			}
+		}
+
+		textarea {
+			.custom-scrollbar();
+			resize: none;
+			min-height: 200px;
+			overflow-y: auto;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		button {
+			.round-borders(5px);
+			max-width: 200px;
+			margin: 20px 0;
+			padding: 12px 15px;
+			background: @main-color;
+			border: 0;
+			color: @white;
+			font-family: @font-family-italic;
+			font-size: 18px;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.conversation-container {
+	width: 100%;
+
+	.back-btn {
+		margin-bottom: 20px;
+		background: none;
+		border: 0;
+		font-family: @font-family-bold;
+
+		.fa {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			color: @main-color;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	h3 {
+		width: 100%;
+		display: block;
+		padding-bottom: 20px;
+		margin-bottom: 40px;
+		border-bottom: 1px solid @light-gray;
+		font-family: @font-family-light;
+		font-size: 30px;
+		text-transform: uppercase;
+
+		b {
+			font-family: @font-family-bold;
+		}
+	}
+
+	.messages-container {
+		.custom-scrollbar();
+		max-height: 350px;
+		overflow-y: auto;
+		padding-right: 10px;
+	}
+
+	.messages {
+		.round-borders(8px);
+		width: 100%;
+		max-width: 50%;
+		padding: 20px;
+		margin-bottom: 20px;
+		background: #efeaea;
+
+		&:last {
+			margin-bottom: 0;
+		}
+
+		&.receiver {
+			margin-left: auto;
+		}
+		
+		.name {
+			display: inline-block;
+			padding: 7px 15px;
+			margin-bottom: 10px;
+			background: @mine-shaft;
+			color: @white;
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+
+		.message {
+			display: block;
+			margin-top: 20px;
+			font-size: 20px;
+		}
+
+		.date-time {
+			display: block;
+		}
+
+		.files {
+			margin-top: 20px;
+		}
+	}
+
+	.actions {
+		margin: 50px 0;
+
+		form {
+			.flex-layout;
+			.flex-align(center);
+			.flex-wrap(wrap);
+			.flex-justify-content(space-between);
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+
+		textarea {
+			.custom-scrollbar();
+			display: block;
+			width: 100%;
+			padding: 12px 15px;
+			font-family: @font-family-base;
+			font-size: 18px;
+			resize: none;
+			min-height: 150px;
+			overflow-y: auto;
+
+			&:focus {
+				outline: none;
+				border: 1px solid @main-color;
+			}
+		}
+
+		button {
+			.round-borders(5px);
+			width: 100%;
+			max-width: 200px;
+			margin: 20px 0;
+			padding: 12px 15px;
+			background: @main-color;
+			border: 0;
+			color: @white;
+			font-family: @font-family-italic;
+			font-size: 18px;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.message-img {
+	.round-borders(5px);
+	.transition(0.3s);
+    max-width: 50px;
+    cursor: pointer;
+
+    &:hover {
+    	opacity: 0.7;
+    }
+}
+
+.modal-zoom {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+
+    .close {
+	    position: absolute;
+	    top: 15px;
+	    right: 35px;
+	    color: #f1f1f1;
+	    font-size: 40px;
+	    font-weight: bold;
+	    transition: 0.3s;
+
+	    &:hover,
+		&:focus {
+		    color: #bbb;
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+	}
+}
+
+.zoom-content-container {
+	position: relative;
+	padding: 0 25px;
+	animation-name: zoom;
+    animation-duration: 0.6s;
+
+	img {
+	    margin: auto;
+	    display: block;
+	    width: 50%;
+	    max-width: 700px;
+	}
+}
+
+@keyframes zoom {
+    from {
+    	.transform(scale(0));
+    } 
+
+    to {
+    	.transform(scale(1));
+    }
+}
