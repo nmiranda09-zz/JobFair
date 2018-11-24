@@ -25,11 +25,7 @@
 		  	 	array_push($errors, 'Passwords do not match.');
 				include "server/errors.php";	
 		  	} else {
-		  		while($rows = $checkusername_query->fetch_assoc()) {
-		  		 $firstname = $rows['firstname'];
-		  		 $type = $rows['type'];
-		  		 $id = $rows['id'];
-		  	}
+
 		        $password = md5($password);
 				
 				$sql_register = "INSERT INTO tbl_users (firstname, lastname, username, type, password) VALUES ('$firstname', '$lastname', '$username', '$type', '$password')";
@@ -273,6 +269,7 @@
 					<span class="category"><?php echo $catName; ?></span>
 					<span class="jobtitle"><?php echo $title; ?></span>
 	    			<span class="date"><img src="images/calendar.png"><?php echo $date; ?></span>
+	    			<span class="type"><img src="images/jobtype.svg"><?php echo $type; ?></span>
 	    			<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>
 	    			<label>Overview:</label>
 	    			<span class="description"><?php echo $description; ?></span>
@@ -318,6 +315,7 @@
 				<div class="jobpost">
 					<span class="category"><?php echo $catName; ?></span>
 					<span class="jobtitle"><?php echo $title; ?></span>
+					<span class="type"><img src="images/jobtype.svg"><?php echo $type; ?></span>
 	    			<span class="date"><img src="images/calendar.png"><?php echo $date; ?></span>
 	    			<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>
 	    			<label>Overview:</label>
@@ -355,6 +353,7 @@
 			<h1 class="jobtitle"><?php echo $title; ?></h1>
 			<div>
 				<span class="date"><img src="images/calendar.png"><?php echo $date ?></span>
+				<span class="type"><img src="images/jobtype.svg"><?php echo $type; ?></span>
 				<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>	
 			</div>
 			
@@ -1117,7 +1116,7 @@
 				$name = $rows['cat_name'];
 				
 				?>
-				<option><?php echo $name; ?></option>
+				<option value="<?php echo $rows['id']; ?>"><?php echo $name; ?></option>
 				<?php
 			}
 		?>
@@ -1133,45 +1132,99 @@
 			$categorySearch = mysqli_real_escape_string($db, $_POST['category']);
 			$jobKeywords = mysqli_real_escape_string($db, $_POST['keywordSearch']);
 
-			$sql_filter = mysqli_query($db, "SELECT * FROM tbl_categories WHERE cat_name='$categorySearch'");
-			$filter_query = mysqli_fetch_array($sql_filter);
+			$sqlCategoryCheck = mysqli_query($db, "SELECT * FROM tbl_jobs WHERE category = '$categorySearch'");
+			$dataCategoryCheck = mysqli_fetch_array($sqlCategoryCheck);
+			$categoryID = $dataCategoryCheck['category'];
 
-			echo $categoryId = $filter_query['id'];
-			echo $categoryName = $filter_query['cat_name'];
-			echo $jobKeywords;
+			$sqlCategory = mysqli_query($db,"SELECT * FROM tbl_categories WHERE id ='$categoryID'");
+			$dataCategory = mysqli_fetch_array($sqlCategory);
+			$categoryName = $dataCategory['cat_name'];
 
-			$sql_getjobpostupdate = "SELECT * FROM tbl_jobs WHERE title='$jobKeywords' ORDER BY id DESC";
-	  		$getjobpostupdate_query = mysqli_query($db, $sql_getjobpostupdate);
+			$sql = "SELECT * FROM tbl_jobs WHERE title LIKE ?";
 
-	  		if (mysqli_num_rows($getjobpostupdate_query) == 0) {
-	  			array_push($errors, 'No '.$categoryName.' jobs available.');
-				include "server/errors.php";
-	  		} else {
-			  	while ($rows = mysqli_fetch_array($getjobpostupdate_query)) {
-				  	$title = $rows['title'];
-				  	$jobsCategory = $rows['category'];
-				  	$type = $rows['type'];
-				  	$salary = $rows['salary'];
-				  	$description = $rows['description'];
-				  	$date = $rows['date'];
-				  	$id = $rows['id'];
+			?>
+				<button class="back-btn" onclick="history.go(-1);"><i class="fa fa-caret-left"></i>Back</button>
 
-				  	$sql_getCatName = mysqli_query($db, "SELECT * FROM tbl_categories WHERE id = '$jobsCategory'");
-			        $getCatName_query = mysqli_fetch_array ($sql_getCatName);
-			     
-			        $catName= $getCatName_query['cat_name'];
-				?>
-					<div class="jobpost">
-						<span class="category"><?php echo $catName; ?></span>
+			 	<h3>You search for: <b><?php echo $jobKeywords ?></b></h3>
+
+			 	<div class="jobpost-container">
+			 <?php
+
+			 if($stmt = mysqli_prepare($db , $sql)){
+			 	mysqli_stmt_bind_param($stmt, "s" , $param_term);
+
+			 	$param_term = $_REQUEST['keywordSearch'] . "%";
+
+			 	if(mysqli_stmt_execute($stmt)){
+			 		$result = mysqli_stmt_get_result($stmt);
+
+			 		if(mysqli_num_rows($result) > 0){
+			 			while($row = mysqli_fetch_array($result , MYSQLI_ASSOC)){
+			 				if($categorySearch == $categoryID){
+				 				$title = $row['title'];
+				 				$date = $row['date'];
+				 				$date = $row['type'];
+				 				$salary = $row['salary'];
+				 				$description = $row['description'];
+				 				
+				 				?>
+				 					<div class="jobpost">
+										<span class="category"><?php echo $categoryName; ?></span>
+										<span class="jobtitle"><?php echo $title; ?></span>
+						    			<span class="date"><img src="images/calendar.png"><?php echo $date; ?></span>
+						    			<span class="type"><img src="images/jobtype.svg"><?php echo $title; ?></span>
+						    			<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>
+						    			<label>Overview:</label>
+						    			<span class="description"><?php echo $description; ?></span>
+						    			<?php echo "<a href = 'readmore.php?id=".$categoryID."'>"?>Read More</a>
+									</div>
+				 				<?php
+			 				} else {
+					 		 	array_push($errors, 'No available jobs.');
+								include "server/errors.php";
+					 		}
+			 			}
+			 		} else {
+			 		 	array_push($errors, 'No available jobs.');
+						include "server/errors.php";
+			 		}
+			 	}
+			 }
+
+			 mysqli_stmt_close($stmt);
+			 ?></div><?php
+			 
+		} else {
+			$sql_allJobs = mysqli_query($db, "SELECT * FROM tbl_jobs, tbl_categories WHERE tbl_categories.id = tbl_jobs.category");
+
+			?>
+				<button class="back-btn" onclick="history.go(-1);"><i class="fa fa-caret-left"></i>Back</button>
+				<h3>Available Jobs</h3>
+				<div class="jobpost-container">
+			<?php
+				
+			while ($allJobs_query = mysqli_fetch_array($sql_allJobs)) {
+				$categoryID = $allJobs_query['category'];
+				$categoryName = $allJobs_query['cat_name'];
+				$title = $allJobs_query['title'];
+ 				$date = $allJobs_query['date'];
+ 				$type = $allJobs_query['type'];
+ 				$salary = $allJobs_query['salary'];
+ 				$description = $allJobs_query['description'];
+
+ 				?>
+ 					<div class="jobpost">
+						<span class="category"><?php echo $categoryName; ?></span>
 						<span class="jobtitle"><?php echo $title; ?></span>
 		    			<span class="date"><img src="images/calendar.png"><?php echo $date; ?></span>
+		    			<span class="type"><img src="images/jobtype.svg"><?php echo $type; ?></span>
 		    			<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>
 		    			<label>Overview:</label>
 		    			<span class="description"><?php echo $description; ?></span>
-		    			<?php echo "<a href = 'readmore.php?id=".$id."'>"?>Read More</a>
+		    			<?php echo "<a href = 'readmore.php?id=".$categoryID."'>"?>Read More</a>
 					</div>
-				<?php
-				}
+ 				<?php 
+ 				?></div><?php
 			}
 		}
 	}
@@ -1199,14 +1252,59 @@
 						<span>(<?php echo $categoryCount; ?> jobs available)</span>
 					</div>
 
-					<a class="see-all-btn" href="#">Browse<i class="fa fa-caret-right"></i></a>
-				
-			<?php
-			?>
+					<?php echo "<a class='see-all-btn' href = 'browse.php?id=".$categoryId."'>"?>Browse<i class="fa fa-caret-right"></i></a>
 				</div>
 			<?php
-
-
 		}
+	}
+
+	function browseCategories() {
+		include "server/db_conn.php";
+
+		$categoryId = $_GET['id'];
+
+		$sql_jobsByCategory = "SELECT * FROM tbl_jobs WHERE category = '$categoryId'";
+		$jobsByCategory_query = mysqli_query($db, $sql_jobsByCategory);
+
+		$sqlCategory = mysqli_query($db,"SELECT * FROM tbl_categories WHERE id ='$categoryId'");
+			$dataCategory = mysqli_fetch_array($sqlCategory);
+			$categoryName = $dataCategory['cat_name'];
+
+			?>
+				<button class="back-btn" onclick="history.go(-1);"><i class="fa fa-caret-left"></i>Back</button>
+
+			 	<h3>Available Jobs for: <b><?php echo $categoryName ?></b></h3>
+
+			 	<div class="jobpost-container">
+			<?php
+
+				if (mysqli_num_rows($jobsByCategory_query) == 0) { 
+					array_push($errors, 'No jobs available.');
+					include "server/errors.php";
+				} else {
+					while ($rows = mysqli_fetch_array($jobsByCategory_query)) {
+						$title = $rows['title'];
+						$date = $rows['date'];
+						$type = $rows['type'];
+						$salary = $rows['salary'];
+						$description = $rows['description'];
+
+						?>
+		 					<div class="jobpost">
+								<span class="category"><?php echo $categoryName; ?></span>
+								<span class="jobtitle"><?php echo $title; ?></span>
+				    			<span class="date"><img src="images/calendar.png"><?php echo $date; ?></span>
+				    			<span class="type"><img src="images/jobtype.svg"><?php echo $type; ?></span>
+				    			<span class="salary"><img src="images/salary.png">$<?php echo $salary; ?>/hr</span>
+				    			<label>Overview:</label>
+				    			<span class="description"><?php echo $description; ?></span>
+				    			<?php echo "<a href = 'readmore.php?id=".$categoryId."'>"?>Read More</a>
+							</div>
+		 				<?php
+					}
+				}
+		?>
+			</div>
+		<?php
 	}
 ?>

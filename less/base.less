@@ -67,12 +67,12 @@ body {
 	height: 100%;
 
     .page-main {
-        min-height: calc(100vh - 44px);
         padding-top: 100px;
         background: #f7f7f7;
     }
 
     .page-wrapper {
+        min-height: calc(100vh - 44px);
         max-width: 1440px;
         margin: 0 auto;
         padding: 50px 20px; 
@@ -121,6 +121,7 @@ h6 {
     background: @torch-red;
     color: @white;
     text-align: center;
+    text-transform: uppercase;
 
     &.success {
         background: green;
@@ -135,6 +136,26 @@ h6 {
     }
 }
 
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: none;
+    border: 0;
+    font-family: @font-family-bold;
+
+    .fa {
+        margin-right: 5px;
+    }
+
+    &:hover {
+        color: @main-color;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+    
 button,
 input[type='submit'] {
     cursor: pointer;

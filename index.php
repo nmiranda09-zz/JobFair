@@ -36,16 +36,6 @@
 				<div class="categories-container">
 					<?php categoryNames(); ?>	
 				</div>
-				
-
-				<!-- <ul>
-					<li><a href="#"><span>Job Post 1</span></a></li>
-					<li><a href="#"><span>Job Post 1</span></a></li>
-					<li><a href="#"><span>Job Post 1</span></a></li>
-					<li><a href="#"><span>Job Post 1</span></a></li>
-					<li><a href="#"><span>Job Post 1</span></a></li>
-				</ul> -->
-
 			</div>
 
 			<!-- <div class="top-employers-container">

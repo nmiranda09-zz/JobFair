@@ -4,8 +4,9 @@
 	register(); 
 
 	$idCheck = $_SESSION['id'];
+	$firstnameCheck = $_SESSION['firstname'];
 ?>
-<?php if($idCheck != ""): ?>
+<?php if($idCheck != "" || $firstnameCheck != ""): ?>
 
 <!DOCTYPE html>
 <html>
