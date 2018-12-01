@@ -11,6 +11,12 @@
 		<span>- Your easiest job finder online.</span>
 	</div>
 
+	<div class="menu-container">
+		<div class="menu-box">
+			<div class="menu"></div>
+		</div>
+	</div>
+
 	<div class="account-container">
 		<?php if (isset($_SESSION['firstname'])): ?>
 			<strong><?php echo "Welcome '{$_SESSION['firstname']}'"; ?></strong>

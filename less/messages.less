@@ -262,3 +262,39 @@
     	.transform(scale(1));
     }
 }
+
+@media only screen and (max-width : 768px) {
+	.sendmsg-container {
+		form {
+			max-width: 100%;
+		}
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	.conversation-container {
+		h3 {
+			font-size: 25px;
+		}
+		
+		.messages {
+			max-width: 100%;
+
+			&.receiver {
+				text-align: right;
+			}
+		}
+
+		.actions {
+			margin: 50px 0 0;
+
+			textarea {
+				margin-bottom: 10px;
+			}
+
+			button {
+				max-width: 100%;
+			}
+		}
+	}
+}

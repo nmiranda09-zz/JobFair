@@ -98,6 +98,21 @@
   justify-content: center;
 }
 .job-category-list .categories-container .categories {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
   width: 30%;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -192,4 +207,33 @@
   display: inline-block;
   margin-top: 10px;
   font-size: 16px;
+}
+@media only screen and (max-width: 768px) {
+  .get-started-container {
+    padding: 150px 20px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .get-started-container {
+    padding: 50px 20px;
+  }
+  .get-started-container h1 {
+    font-size: 30px;
+  }
+  .get-started-container .search-container form {
+    display: block;
+  }
+  .get-started-container .search-container form select,
+  .get-started-container .search-container form input,
+  .get-started-container .search-container form button {
+    max-width: 100%;
+    margin: 0 0 15px;
+  }
+  .job-category-list {
+    padding: 10px;
+  }
+  .job-category-list .categories-container .categories {
+    width: 100%;
+    margin: 0 0 20px;
+  }
 }

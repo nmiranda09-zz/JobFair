@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 	preventFormResubmit();
 	limitDescription();
-	/*addActive();*/
+	addActive();
 	applyModal();
 	changeApplyBtnText();
 	openTabs();
@@ -16,23 +16,22 @@ $(document).ready(function () {
 	};
 
 	function limitDescription() {
-		$(".jobsearch-container .description").text(function(index, currentText) {
+		$(".jobsearch-index .description").text(function(index, currentText) {
 		    return currentText.substr(0, 175) + '...';
 		});
 	}
 
-	/*function addActive() {
-		$('.readmore-btn').click(function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
+	function addActive() {
+		$('.menu-container, .account-index .left-column > h3').click(function() {
+			if($(this).parent().hasClass('active')) {
+				$(this).parent().removeClass('active');
 			} else {
-				$(this).addClass('active');
+				$(this).parent().addClass('active');
 			}
 		});
-	}*/
+	}
 
 	function applyModal() {
-		// Get the modal
 		var modal = document.getElementById('modal-container');
 
 		var btn = document.getElementById("readmore-modal");
@@ -51,7 +50,6 @@ $(document).ready(function () {
 			if(event.target == modal) {
 				$(modal).css({"opacity":"0", "visibility":"hidden"});
 			}
-			
 		});
 	}
 
@@ -75,25 +73,20 @@ $(document).ready(function () {
 	}
 
 	function imgZoomModal() {
-		// Get the modal
 		var modal = document.getElementById('zoom_modal_ontainer');
-
-		// Get the image and insert it inside the modal - use its "alt" text as a caption
 		var img = document.getElementById('msg_img');
 		var modalImg = document.getElementById("img_zoom");
-		
-		img.onclick = function(){
-		    modal.style.display = "block";
-		    modalImg.src = this.src;
-		    captionText.innerHTML = this.alt;
-		}
 
-		// Get the <span> element that closes the modal
+		$(img).click(function() {
+			$(this).css('display', 'block');
+			modalImg.src = this.src;
+		    captionText.innerHTML = this.alt;
+		});
+
 		var span = document.getElementsByClassName("close")[0];
 
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() { 
-		  modal.style.display = "none";
-		}
+		$(span).click(function() { 
+		  $(this).css('display', 'none');
+		});
 	}
 });

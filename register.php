@@ -11,7 +11,7 @@
 
 	<div class="page-main">
 	    <div class="page-wrapper">
-	    	<div class="inner-wrapper">
+	    	<div class="main-column">
 	    		<form class="form" method="post" action="register.php">
 		            <h3>Create an account</h3>
 		            <legend>Required Fields *</legend>

@@ -31,6 +31,18 @@ header {
 	}
 
 	.account-container {
+		a {
+			font-family: @font-family-base;
+		}
+
+		strong {
+			font-family: @font-family-bold;
+		}
+
+		.logout-btn {
+			color: @torch-red;
+		}
+
 		a,
 		strong {
 			margin-right: 10px;
@@ -38,7 +50,7 @@ header {
 			border-right: 1px solid @light-gray;
 			color: @mine-shaft;
 			font-size: 16px;
-			font-family: @font-family-base;
+			
 			text-decoration: none;
 			text-transform: uppercase;
 
@@ -51,6 +63,133 @@ header {
 
 		a:hover {
 			text-decoration: underline;
+		}
+	}
+}
+
+@media only screen and (min-width : 939px) {
+	.menu-container {
+		display: none;
+	}
+}
+
+@media only screen and (max-width : 938px) {
+	header {
+		&.active {
+			display: block;
+			height: 100%;
+
+			.logo-container {
+				float: left;
+				padding-bottom: 20px;
+			}
+
+			.menu-container {
+				float: right;
+
+				.menu-box {
+					.menu {
+						transition-delay: .22s;
+	    				transition-timing-function: cubic-bezier(.215,.61,.355,1);
+	    				transform: translate3d(0,-10px,0) rotate(-45deg);
+
+	    				&:before {
+	    					top: 0;
+	    					transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .16s,
+	    					transform .13s cubic-bezier(.215,.61,.355,1) .25s;
+	    					transform: rotate(-90deg);
+	    				}
+
+	    				&:after {
+	    					top: 0;
+	    					transition: top .2s cubic-bezier(.33333,0,.66667,.33333),
+	    					opacity .1s linear .22s;
+	    					opacity: 0;
+	    				}
+					}
+				}
+			}
+
+			.account-container {
+				clear: both;
+				display: block;
+				border-top: 1px solid @light-gray;
+
+				a, strong {
+					display: block;
+					width: 100%;
+					padding: 20px;
+
+					&:not(:last-child) {
+						border-bottom: 1px solid @light-gray;
+						border-right: 0;
+					}
+				}
+			}
+		}
+		
+		.account-container {
+			display: none;
+		}
+
+		.menu-container {
+			.transition(linear .15s);
+		    padding: 15px;
+		    cursor: pointer;
+
+		    .menu-box {
+		    	position: relative;
+			    display: inline-block;
+			    width: 40px;
+			    height: 24px;
+
+			    .menu,
+			    .menu:before,
+			    .menu:after {
+			    	.transition(transform ease .15s);
+			    	.round-borders(4px);
+			    	position: absolute;
+				    width: 40px;
+				    height: 4px;
+				    background-color: @mine-shaft;
+			    }
+
+			    .menu {
+			    	top: auto;
+				    bottom: 0;
+				    transition-delay: .13s;
+				    transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+				    transition-duration: .13s;
+
+				    &:before,
+				    &:after {
+				    	display: block;
+   						content: '';
+				    }
+
+				    &:before {
+				    	top: -10px;
+				    	transition: top .12s cubic-bezier(.33333,.66667,.66667,1) .2s,
+				    	transform .13s cubic-bezier(.55,.055,.675,.19);
+				    }
+
+				    &:after {
+				    	top: -20px;
+    					transition: top .2s cubic-bezier(.33333,.66667,.66667,1) .2s,
+    					opacity .1s linear;
+				    }
+			    }
+		    }
+		}
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	header {
+		.logo-container {
+			span {
+				display: none;
+			}
 		}
 	}
 }

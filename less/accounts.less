@@ -15,10 +15,8 @@
 	}
 
 	.page-wrapper {
-		.inner-wrapper {
-			.flex-layout;
-			padding: 50px;
-			background: @white;
+		.main-column {
+			padding: 40px;
 		}
 
 		h3 {
@@ -111,14 +109,7 @@
 }
 
 .account-index {
-	.page-main {
-		background: @light-gray;
-	}
-
 	.page-wrapper {
-		.flex-layout;
-		padding: 50px 25px;
-
 		.left-column {
 			width: 30%;
 			margin-right: 30px;
@@ -134,6 +125,9 @@
 			}
 
 			.tab-list {
+				border: 1px solid @light-gray;
+				border-top: 0;
+
 				li {
 					&:last-child a {
 				    	border-bottom: 0;
@@ -169,6 +163,7 @@
 			.tab-content {
 				display: none;
 				padding: 20px;
+				border: 1px solid @light-gray;
 
 				h3 {
 					padding-bottom: 20px;
@@ -234,15 +229,11 @@
 					}
 
 					.save-btn {
-						display: block;
 						max-width: 250px;
 						padding: 10px 15px;
-						margin-bottom: 30px;
 						border: 0;
 						background: @main-color;
 						color: @white;
-						font-family: @font-family-bold;
-						text-transform: uppercase;
 					}
 				}
 			}
@@ -350,6 +341,145 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+@media only screen and (max-width : 769px) {
+	.account-index {
+		.page-wrapper {
+			.left-column {
+				h3 {
+					.fa {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 768px) {
+	.login-index,
+	.register-index,
+	.jobpost-index {
+		.main-column {
+			.form {
+				.flex-order(2);
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+
+			.form,
+			.info-container {
+				width: 100%;
+			}
+
+			.info-container {
+				margin-bottom: 30px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid @light-gray;
+			}
+		}
+	}
+
+	.account-index {
+		.page-wrapper {
+			.left-column,
+			.right-column {
+				width: 100%;
+			}
+
+			.left-column {
+				margin: 0 0 30px;
+
+				h3 {
+					.flex-layout;
+					.flex-justify-content(space-between);
+
+					.fa {
+						display: block;
+					}
+				}
+
+				.tab-container {
+					display: none;
+				}
+
+				&.active {
+					.fa:before {
+						content: @angle-down;
+					}
+
+					.tab-container {
+						display: block;
+
+						a {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	.login-index,
+	.register-index,
+	.jobpost-index {
+		.page-wrapper {
+			.main-column {
+				padding: 20px;
+			}
+
+			h3 {
+				font-size: 20px;
+				margin-bottom: 15px;
+			}
+
+			.info-container {
+				p {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+
+	.account-index {
+		.page-wrapper {
+			.left-column {
+				h3 {
+					font-size: 20px;
+				}
+			}
+
+			.right-column {
+				.editprofile-container {
+					form {
+						.photo img {
+							max-width: 100px;
+						}
+
+						.save-btn {
+							max-width: 100%;
+						}
+					}
+				}
+
+				.messagebox-container {
+					a {
+						display: block;
+					}
+				}
+
+				.tab-content {
+					h3 {
+						font-size: 20px;
+					}
+				}
+			}	
 		}
 	}
 }

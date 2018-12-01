@@ -299,3 +299,28 @@
     transform: scale(1);
   }
 }
+@media only screen and (max-width: 768px) {
+  .sendmsg-container form {
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .conversation-container h3 {
+    font-size: 25px;
+  }
+  .conversation-container .messages {
+    max-width: 100%;
+  }
+  .conversation-container .messages.receiver {
+    text-align: right;
+  }
+  .conversation-container .actions {
+    margin: 50px 0 0;
+  }
+  .conversation-container .actions textarea {
+    margin-bottom: 10px;
+  }
+  .conversation-container .actions button {
+    max-width: 100%;
+  }
+}

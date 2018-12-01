@@ -18,10 +18,8 @@
 	<div class="page-main">
 		<div class="page-wrapper">
 			<div class="job-description">
+				<button class="back-btn" onclick="history.go(-1);"><i class="fa fa-caret-left"></i>Back</button>
 				<?php description(); ?>
-				<div class="actions">
-    				<button onclick="history.go(-1);">Back</button>
-    			</div>
 			</div>
 		</div>
 	</div>

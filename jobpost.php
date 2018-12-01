@@ -18,7 +18,7 @@
 
 	<div class="page-main">
 	    <div class="page-wrapper">
-	    	<div class="inner-wrapper">
+	    	<div class="main-column">
 	    		<form class="form" method="post" action="jobpost.php">
 		            <h3>Create a Job Post</h3>
 		            <legend>Required Fields *</legend>

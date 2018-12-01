@@ -9,7 +9,7 @@
 
 	<div class="page-main">
 	    <div class="page-wrapper">
-	    	<div class="inner-wrapper">
+	    	<div class="main-column">
 	    		<form class="form" action="login.php" method="post">
 		            <h3>Login to your account</h3>
 		            <legend>Required Fields *</legend>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2018 at 08:37 PM
+-- Generation Time: Dec 01, 2018 at 03:12 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -78,7 +78,7 @@ CREATE TABLE `tbl_jobs` (
   `type` varchar(255) NOT NULL,
   `salary` int(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
   `date` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `user_posted_id` int(255) NOT NULL
@@ -97,8 +97,7 @@ CREATE TABLE `tbl_messages` (
   `message` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `date_time` varchar(255) NOT NULL,
-  `files` varchar(255) NOT NULL,
-  `action` int(11) NOT NULL
+  `files` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,9 +118,9 @@ CREATE TABLE `tbl_users` (
   `education_level` varchar(255) DEFAULT NULL,
   `school` varchar(255) NOT NULL,
   `experience` varchar(255) DEFAULT NULL,
-  `skills` varchar(255) DEFAULT NULL,
+  `skills` longtext,
   `profile_picture` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
   `emp_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

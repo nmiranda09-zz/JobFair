@@ -52,7 +52,15 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
   margin: 15px 0;
+}
+.applicants-container .jobseeker .info > div > span {
+  margin-bottom: 10px;
 }
 .applicants-container .jobseeker .info > div.top-info {
   -webkit-justify-content: space-between;
@@ -117,4 +125,19 @@
   color: #fff;
   font-family: 'roboto_condenseditalic';
   text-transform: uppercase;
+}
+@media only screen and (max-width: 479px) {
+  .applicants-container .jobseeker {
+    display: block;
+  }
+  .applicants-container .jobseeker .photo {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+  .applicants-container .jobseeker .info {
+    width: 100%;
+  }
+  .applicants-container .jobseeker .info > div .actions a {
+    margin-bottom: 10px;
+  }
 }

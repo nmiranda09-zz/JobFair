@@ -93,6 +93,9 @@
 		.flex-justify-content(center);
 
 		.categories {
+			.flex-layout;
+			.flex-direction(column);
+			.flex-justify-content(space-between);
 			width: 30%;
 			margin-left: 20px;
 			margin-bottom: 20px;
@@ -187,6 +190,46 @@
 				display: inline-block;
 				margin-top: 10px;
 				font-size: 16px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 768px) {
+	.get-started-container {
+		padding: 150px 20px;
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	.get-started-container {
+		padding: 50px 20px;
+
+		h1 {
+			font-size: 30px;
+		}
+
+		.search-container {
+			form {
+				display: block;
+
+				select,
+				input,
+				button {
+					max-width: 100%;
+					margin: 0 0 15px;
+				}
+			}
+		}
+	}
+
+	.job-category-list {
+		padding: 10px;
+		
+		.categories-container {
+			.categories {
+				width: 100%;
+				margin: 0 0 20px;
 			}
 		}
 	}

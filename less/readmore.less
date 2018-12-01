@@ -23,7 +23,8 @@
 			    margin: 15% auto;
 			    padding: 20px;
 			    border: 1px solid #888;
-			    width: 50%;
+			    width: 100%;
+			    max-width: 460px;
 
 			    legend {
 			    	color: @torch-red;
@@ -102,6 +103,7 @@
 		div {
 			.flex-layout;
 			.flex-align(center);
+			.flex-wrap(wrap);
 
 			&:not(.actions){
 				margin-bottom: 20px;
@@ -141,7 +143,8 @@
 			}
 
 			&.category {
-				display: inline-block;
+				display: block;
+				max-width: 180px;
 				padding: 10px;
 				margin-bottom: 8px;
 				background: @blue;
@@ -157,6 +160,7 @@
 				font-size: 23px;
 				font-family: @font-family-light;
 				line-height: 1.3;
+				white-space: pre-wrap;
 			}
 		}
 
@@ -166,24 +170,67 @@
 			.readmore-btn.active + .applyform-container {
 				display: block;
 			}
+
+			.readmore-btn {
+				.round-borders(5px);
+				border: 0;
+				display: block;
+				width: 100%;
+				max-width: 150px;
+				padding: 12px;
+				background: @main-color;
+				border: 0;
+				color: @white;
+				text-decoration: none;
+				line-height: 1;
+				margin-right: 20px;
+
+				&:last-of-type {
+					margin-right: 0;
+				}
+			}
 		}
+	}
+}
 
-		button {
-			.round-borders(5px);
-			border: 0;
-			display: block;
-			width: 100%;
-			max-width: 150px;
-			padding: 12px;
-			background: @main-color;
-			border: 0;
-			color: @white;
-			text-decoration: none;
-			line-height: 1;
-			margin-right: 20px;
+@media only screen and (max-width: 479px) {
+	.description-index {
+		.job-description {
+			h1 {
+				font-size: 30px;
+			}
 
-			&:last-of-type {
-				margin-right: 0;
+			div:not(.actions) {
+				& > span {
+					width: 100%;
+					margin: 0 0 10px;
+					font-size: 16px;
+				}
+			}
+
+			span.description {
+				font-size: 18px;
+				text-align: justify;
+			}
+
+			.actions {
+				.readmore-btn {
+					max-width: 100%;
+				}
+			}
+
+			.applyform-container {
+				form {
+					max-width: 300px;
+
+					h3 {
+						font-size: 25px;
+
+						img {
+							max-width: 35px;
+						}
+					}
+				}
 			}
 		}
 	}

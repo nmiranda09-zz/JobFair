@@ -182,3 +182,50 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	.jobsearch-index {
+		.page-wrapper {
+			.left-column,
+			.right-column {
+				width: 100%;
+			}
+
+			.left-column {
+				margin: 0 0 30px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.jobsearch-index {
+		.page-wrapper {
+			.jobsearch-container {
+				h3 {
+					font-size: 23px;
+				}
+			}
+			
+			.left-column {
+				h3 {
+					font-size: 25px;
+					text-align: center;
+				}
+			}
+
+			.jobsearch-filter-container {
+				.flex-wrap(wrap);
+				.flex-align(unset);
+
+				label {
+					margin: 0 0 15px;
+				}
+
+				select {
+					max-width: 80%;
+				}
+			}
+		}
+	}
+}

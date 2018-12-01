@@ -31,15 +31,13 @@
 				$sql_register = "INSERT INTO tbl_users (firstname, lastname, username, type, password) VALUES ('$firstname', '$lastname', '$username', '$type', '$password')";
 				mysqli_query($db, $sql_register);
 
-		  		$_SESSION['id'] = $id;
+
+				$sqlGetID = mysqli_query($db , "SELECT * FROM tbl_users ORDER BY id desc");
+				$dataGetID = mysqli_fetch_array($sqlGetID);
+				$idGet = $dataGetID['id'];
+
+		  		$_SESSION['id'] = $idGet;
 				$_SESSION['type'] = $type;
-				$_SESSION['company'] = $company;
-				$_SESSION['salary'] = $salary;
-				$_SESSION['education_level'] = $education_level;
-				$_SESSION['school'] = $school;
-				$_SESSION['experience'] = $experience;
-				$_SESSION['skills'] = $skills;
-				$_SESSION['description'] = $description;
 				$_SESSION['firstname'] = $firstname;
 				$_SESSION['lastname'] = $lastname;
 	  			$_SESSION['loggedin'] = 'true';
@@ -76,13 +74,6 @@
 		  		if (mysqli_num_rows($login_query) > 0) {
 		  			$_SESSION['id'] = $id;
 					$_SESSION['type'] = $type;
-					$_SESSION['company'] = $company;
-					$_SESSION['salary'] = $salary;
-					$_SESSION['education_level'] = $education_level;
-					$_SESSION['school'] = $school;
-					$_SESSION['experience'] = $experience;
-					$_SESSION['skills'] = $skills;
-					$_SESSION['description'] = $description;
 					$_SESSION['firstname'] = $firstname;
 					$_SESSION['lastname'] = $lastname;
 		  			$_SESSION['loggedin'] = 'true';
@@ -105,12 +96,6 @@
 		if (session_destroy()) {
 			unset($_SESSION['firstname']);
 			unset($_SESSION['lastname']);
-			unset($_SESSION['education_level']);
-			unset($_SESSION['school']);
-			unset($_SESSION['description']);
-			unset($_SESSION['company']);
-			unset($_SESSION['salary']);
-			unset($_SESSION['skills']);
 			unset($_SESSION['id']);
 			unset($_SESSION['type']);
 			unset($_SESSION['loggedin']);
@@ -131,7 +116,7 @@
 			$date = mysqli_real_escape_string($db, date('l m-d-Y'));
 			$status = mysqli_real_escape_string($db, "Open");
 
-			$sql_getCatId = mysqli_query($db, "SELECT id FROM tbl_categories WHERE cat_name = '$category'");
+			$sql_getCatId = mysqli_query($db, "SELECT * FROM tbl_categories WHERE id = '$category'");
 	        $getCatId_query = mysqli_fetch_array ($sql_getCatId);
 	     
 	        $catId= $getCatId_query['id'];
@@ -168,9 +153,11 @@
 			  	$firstname = $rows['firstname'];
 			  	$lastname = $rows['lastname'];
 			  	$experience = $rows['experience'];
+			  	$salary = $rows['salary'];
 			  	$description = $rows['description'];
 			  	$education_level = $rows['education_level'];
 			  	$school = $rows['school'];
+			  	$skills = $rows['skills'];
 			  	$profilePicture = $rows['profile_picture'];
 
 			?>
@@ -200,7 +187,7 @@
 		    					<?php if(empty($salary)): ?>
 			    					<?php echo 'No Info'; ?></span>
 			    				<?php else: ?>
-			    					<?php echo $salary; ?></span>
+			    					<?php echo $salary; ?> / hr</span>
 			    				<?php endif; ?>
 		    				</span>
 		    				<span class="education-level">
@@ -219,6 +206,16 @@
 			    					<?php echo $school; ?></span>
 			    				<?php endif; ?>	
 		    				</span>
+
+		    				<span class="skills">
+		    					<img src="images/skills.svg" alt="Skills"/>
+		    					<?php if(empty($skills)): ?>
+			    					<?php echo 'No Info'; ?></span>
+			    				<?php else: ?>
+			    					<?php echo $skills; ?></span>
+			    				<?php endif; ?>	
+		    				</span>
+
 	    				</div>
 	    				<label>About me:</label>
 		    			<span class="outline">
@@ -285,7 +282,7 @@
 
 		$categoryFilter = mysqli_real_escape_string($db, $_POST['category']);
 
-		$sql_filter = mysqli_query($db, "SELECT * FROM tbl_categories WHERE cat_name = '$categoryFilter'");
+		$sql_filter = mysqli_query($db, "SELECT * FROM tbl_categories WHERE id = '$categoryFilter'");
 		$filter_query = mysqli_fetch_array($sql_filter);
 
 		$categoryId = $filter_query['id'];
@@ -385,8 +382,6 @@
         $rows = mysqli_fetch_array($checkApplication_query);
 
     	?>
-    		<button onclick="history.go(-1);">Back</button>
-
     		<?php if($rows == true): ?>
 				<button id="readmore-modal" class="readmore-btn" disabled>Applied</button>	
 			<?php else: ?>
@@ -451,89 +446,50 @@
 		include "server/db_conn.php"; 
 
 		$id = $_SESSION['id'];
-		$firstname = $_SESSION['firstname'];
-  		$lastname = $_SESSION['lastname'];
-  		$company = $_SESSION['company'];
-  		$salary = $_SESSION['salary'];
-  		$education_level = $_SESSION['education_level'];
-  		$school = $_SESSION['school'];
-  		$experience = $_SESSION['experience'];
-  		$skills = $_SESSION['skills'];
-  		$description = $_SESSION['description'];
 
-		$sql_getUserId = "SELECT * FROM tbl_users WHERE id = '$id'";
-	  	$getUserId_query = mysqli_query($db, $sql_getUserId);
+		$sql_getUserId = mysqli_query($db, "SELECT * FROM tbl_users WHERE id = '$id'");
+	  	$getUserId_query = mysqli_fetch_array($sql_getUserId);
 
-	  	if ($rows = mysqli_fetch_array($getUserId_query)) {
-	  		$id = $rows['id'];
-	  		$firstname = $rows['firstname'];
-	  		$lastname = $rows['lastname'];
-	  		$company = $rows['company'];
-	  		$salary = $rows['salary'];
-	  		$education_level = $rows['education_level'];
-	  		$school = $rows['school'];
-	  		$experience = $rows['experience'];
-	  		$skills = $rows['skills'];
-	  		$profilePicture = $rows['profile_picture'];
-	  		$description = $rows['description'];
-	  		$image = $rows['profile_picture'];
-	  		$target = "files/";
-	  	}
+	  	$firstname = $getUserId_query['firstname'];
+  		$lastname = $getUserId_query['lastname'];
+  		$company = $getUserId_query['company'];
+  		$salary = $getUserId_query['salary'];
+  		$education_level = $getUserId_query['education_level'];
+  		$school = $getUserId_query['school'];
+  		$experience = $getUserId_query['experience'];
+  		$skills = $getUserId_query['skills'];
+  		$profilePicture = $getUserId_query['profile_picture'];
+  		$description = $getUserId_query['description'];
+  		$image = $getUserId_query['profile_picture'];
+  		$target = "files/";
 	  	
 	  	if(isset($_POST['save'])) {
 	  		header('Location: '.$_SERVER['REQUEST_URI']);
-
-	  		$fileExistsFlag = 0; 
+	  		
 			$fileName = $_FILES['profilePicture']['name'];
 	  		$firstname = mysqli_real_escape_string($db, $_POST['firstname']);
 	  		$lastname = mysqli_real_escape_string($db, $_POST['lastname']);
+	  		$fileTarget = $target.$fileName;
+			$tempFileName = $_FILES["profilePicture"]["tmp_name"];
+			$result = move_uploaded_file($tempFileName,$fileTarget);
 
-			if ($_SESSION['type'] == 'Employer') {
-				$company = mysqli_real_escape_string($db, $_POST['company']);	
-			} else {
-				$education_level = mysqli_real_escape_string($db, $_POST['education_level']);
-				$school = mysqli_real_escape_string($db, $_POST['school']);
-				$experience = mysqli_real_escape_string($db, $_POST['experience']);
-		  		$skills = mysqli_real_escape_string($db, $_POST['skills']);
-		  		$description = mysqli_real_escape_string($db, $_POST['description']);
-		  		$salary = mysqli_real_escape_string($db, $_POST['salary']);
-			}
-			
-	  		if($fileExistsFlag == 0) { 
-				$target = "files/";		
-				$fileTarget = $target.$fileName;
-				$tempFileName = $_FILES["profilePicture"]["tmp_name"];
-				$result = move_uploaded_file($tempFileName,$fileTarget);
-
-				if($result) { 
-					$sql_editProfilePic = "UPDATE tbl_users SET profile_picture='$fileName' WHERE id='$id'";
-			  		mysqli_query($db, $sql_editProfilePic);
-
-			  		if (count($errors) == 0) {
-			  			?>
-			  				<div class="success">
-			  			<?php
-								array_push($errors, 'Upload Successful.');
-								include "server/errors.php";
-						?>
-							</div>
-						<?php
-					}	
+				if ($_SESSION['type'] == 'Employer') {
+					$company = mysqli_real_escape_string($db, $_POST['company']);	
+				} else {
+					$education_level = mysqli_real_escape_string($db, $_POST['education_level']);
+					$school = mysqli_real_escape_string($db, $_POST['school']);
+					$experience = mysqli_real_escape_string($db, $_POST['experience']);
+			  		$skills = mysqli_real_escape_string($db, $_POST['skills']);
+			  		$description = mysqli_real_escape_string($db, $_POST['description']);
+			  		$salary = mysqli_real_escape_string($db, $_POST['salary']);
 				}
-			}
-
-			$sql_editProfile = "UPDATE tbl_users SET firstname='$firstname', lastname='$lastname', company='$company', education_level='$education_level',  school='$school', salary='$salary', experience='$experience', skills='$skills', description='$description' WHERE id='$id'";
-		  		mysqli_query($db, $sql_editProfile);
-		  		
+			
 		  		if (count($errors) == 0) {
-		  			?>
-		  				<div class="success">
-		  			<?php
-							array_push($errors, 'You have successfully edited your profile.');
-							include "server/errors.php";
-					?>
-						</div>
-					<?php
+		  			$result;
+
+		  			$sql_editProfile = "UPDATE tbl_users SET firstname='$firstname', lastname='$lastname', company='$company', education_level='$education_level',  school='$school', salary='$salary', experience='$experience', skills='$skills', description='$description', profile_picture='$fileName' WHERE id='$id'";
+		  			mysqli_query($db, $sql_editProfile);
+
 				}
 	  		}
 	  	?>
@@ -647,6 +603,7 @@
 			  	$description = $rows['description'];
 			  	$education_level = $rows['education_level'];
 			  	$school = $rows['school'];
+			  	$skills = $rows['skills'];
 			  	$profilePicture = $rows['profile_picture'];
 			  	$target = 'files/';
 			  	$file = $rows['filename'];
@@ -718,7 +675,7 @@
 		    					<?php if(empty($salary)): ?>
 			    					<?php echo 'No Info'; ?></span>
 			    				<?php else: ?>
-			    					<?php echo $salary; ?></span>
+			    					<?php echo '$'.$salary.' '.'/hr'; ?></span>
 			    				<?php endif; ?>
 		    				</span>
 		    				<span class="education-level">
@@ -735,6 +692,14 @@
 			    					<?php echo 'No Info'; ?></span>
 			    				<?php else: ?>
 			    					<?php echo $school; ?></span>
+			    				<?php endif; ?>	
+		    				</span>
+		    				<span class="school">
+		    					<img src="images/skills.svg" alt="Skills"/>
+		    					<?php if(empty($skills)): ?>
+			    					<?php echo 'No Info'; ?></span>
+			    				<?php else: ?>
+			    					<?php echo $skills; ?></span>
 			    				<?php endif; ?>	
 		    				</span>
 	    				</div>
@@ -843,48 +808,175 @@
 
 	function messages() {
 		include "server/db_conn.php";
-
 		$id = $_SESSION['id'];
 
-		$sql_getMessages = "SELECT DISTINCT subject,receiver_id FROM tbl_messages WHERE sender_id = '$id' ORDER BY id DESC";
-		$getMessages_query = mysqli_query($db, $sql_getMessages);
-		    
+		$sql_getMessagesCHecker =mysqli_query($db ,"SELECT * FROM tbl_messages"); 
+		$getMessages_queryChecker =mysqli_fetch_array($sql_getMessagesCHecker);
 
-		if (mysqli_num_rows($getMessages_query) == 0) { 
-			array_push($errors, 'No messages available.');
-			include "server/errors.php";
+		$senderChecker = $getMessages_queryChecker['sender_id'];
+
+		if($id != $senderChecker){
+			$count = 0;
+			$sqlGetMessageID = mysqli_query($db,"SELECT * FROM tbl_messages WHERE receiver_id = '$id'");
+			while($dataGetMessageID = mysqli_fetch_array($sqlGetMessageID)){
+				$count++;
+			}
+
+			if($count == 1){
+				$sql_getMessages = "SELECT DISTINCT subject,receiver_id FROM tbl_messages WHERE receiver_id = '$id' ORDER BY id DESC";
+				$getMessages_query = mysqli_query($db, $sql_getMessages);
+				    
+				if (mysqli_num_rows($getMessages_query) == 0) { 
+					array_push($errors, 'No messages available.');
+					include "server/errors.php";
+				} else {
+					while ($rows = mysqli_fetch_array($getMessages_query)) {
+						$subject = $rows['subject'];
+						$receiverId	 = $rows['receiver_id'];
+						$sqlReceiver = mysqli_query($db, "SELECT * FROM tbl_messages WHERE receiver_id='$receiverId' And subject ='$subject'");
+				        $data_receiver = mysqli_fetch_array ($sqlReceiver);
+				     
+				        $receiverId= $data_receiver['receiver_id'];
+				        $sender= $data_receiver['sender_id'];
+						?>
+							<div class="messages">
+								<span>Subject: </span>
+								
+								<?php if($id == $sender): ?>
+
+									<a href="<?php echo 'messages.php?id='.$receiverId.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+								<?php else: ?>
+							    	<a href="<?php echo 'messages.php?id='.$sender.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+							    <?php endif; ?>
+							    
+								<?php if($receiverId == $id){
+
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$sender'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
+
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+									
+								} else if ($sender == $id){
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$receiverId'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
+
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+								}?>
+							</div>
+						<?php
+					}
+				}
+			}else{
+				$sql_getMessages = "SELECT DISTINCT subject,receiver_id FROM tbl_messages WHERE receiver_id = '$id' ORDER BY id DESC";
+				$getMessages_query = mysqli_query($db, $sql_getMessages);
+				    
+				if (mysqli_num_rows($getMessages_query) == 0) { 
+					array_push($errors, 'No messages available.');
+					include "server/errors.php";
+				} else {
+					while ($rows = mysqli_fetch_array($getMessages_query)) {
+						$subject = $rows['subject'];
+						$receiverId	 = $rows['receiver_id'];
+						$sqlReceiver = mysqli_query($db, "SELECT * FROM tbl_messages WHERE receiver_id='$receiverId' And subject ='$subject'");
+				        $data_receiver = mysqli_fetch_array ($sqlReceiver);
+				     
+				        $receiverId= $data_receiver['receiver_id'];
+						$sender = $data_receiver['sender_id'];
+						?>
+							<div class="messages">
+								<span>Subject: </span>
+								<?php if($id == $sender): ?>
+
+									<a href="<?php echo 'messages.php?id='.$receiverId.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+								<?php else: ?>
+							    	<a href="<?php echo 'messages.php?id='.$sender.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+							    <?php endif; ?>
+							    
+								<?php if($receiverId == $id){
+
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$sender'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
+
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+									
+								} else if ($sender == $id){
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$receiverId'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
+
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+								}?>
+							</div>
+						<?php
+					}
+				}
+			}
+
 		} else {
-			while ($rows = mysqli_fetch_array($getMessages_query)) {
-				$subject = $rows['subject'];
-				$receiverId	 = $rows['receiver_id'];
+			$sql_getMessages = "SELECT DISTINCT subject,receiver_id FROM tbl_messages WHERE sender_id = '$id' ORDER BY id DESC";
+			$getMessages_query = mysqli_query($db, $sql_getMessages);
+			    
+			if (mysqli_num_rows($getMessages_query) == 0) { 
+				array_push($errors, 'No messages available.');
+				include "server/errors.php";
+			} else {
+				while ($rows = mysqli_fetch_array($getMessages_query)) {
+					$subject = $rows['subject'];
+					$receiverId	 = $rows['receiver_id'];
+					$sqlReceiver = mysqli_query($db, "SELECT * FROM tbl_messages WHERE receiver_id='$receiverId' And subject ='$subject'");
+			        $data_receiver = mysqli_fetch_array ($sqlReceiver);
+			     
+			        $receiverId= $data_receiver['receiver_id'];
+					$sender = $data_receiver['sender_id'];
+					?>
+						<div class="messages">
+							<span>Subject: </span>
+								<?php if($id == $sender): ?>
 
-				$sqlReceiver = mysqli_query($db, "SELECT * FROM tbl_messages WHERE receiver_id='$receiverId' And subject ='$subject'");
-		        $data_receiver = mysqli_fetch_array ($sqlReceiver);
-		     
-		        $receiverId= $data_receiver['receiver_id'];
+									<a href="<?php echo 'messages.php?id='.$receiverId.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+								<?php else: ?>
+							    	<a href="<?php echo 'messages.php?id='.$sender.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+							    <?php endif; ?>
+							    
+								<?php if($receiverId == $id){
 
-				?>
-					<div class="messages">
-						<span>Subject: </span>
-						<a href="<?php echo 'messages.php?id='.$receiverId.''; ?>" title="<?php echo $subject; ?>"><?php echo $subject; ?></a>
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$sender'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
 
-						<span class="name">
-							<?php 
-								$sql_getUser = "SELECT id, firstname, lastname FROM tbl_users WHERE id = '$receiverId'";
-								$getUser_query = mysqli_query($db, $sql_getUser);
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+									
+								} else if ($sender == $id){
+									$sqlUSers = mysqli_query($db , "SELECT * FROM tbl_users WHERE id = '$receiverId'");
+									$dataUsers = mysqli_fetch_array($sqlUSers);
+									$firstname = $dataUsers['firstname'];
+									$lastname = $dataUsers['lastname'];
 
-								while ($rows = mysqli_fetch_array($getUser_query)) {
-									$rowId = $rows['id'];
-									$firstname = $rows['firstname'];
-									$lastname = $rows['lastname'];
-
-									echo 'Recepient: '.$firstname.' '.$lastname;
-								}
-
-							?>
-						</span>
-					</div>
-				<?php
+									?>
+										<span class="name"><?php echo $firstname.' '.$lastname; ?></span>
+									<?php
+								}?>
+						</div>
+					<?php
+				}
 			}
 		}
 	}
@@ -903,15 +995,16 @@
 		<div id="messagebox" class="messages-container">
 		<?php
 
-		$sql_Subject = "SELECT * FROM tbl_messages WHERE sender_id ='$receiverId' or receiver_id = '$receiverId'";
+		$sql_Subject = "SELECT * FROM tbl_messages WHERE sender_id ='$receiverId' or receiver_id = '$receiverId' And subject = '$subject'";
 		$data_Subject = mysqli_query($db, $sql_Subject);
 		
 		while($row_subject = mysqli_fetch_array($data_Subject)){
 			
 			$sender = $row_subject['sender_id'];
 			$receiver = $row_subject['receiver_id'];
+			$sub = $row_subject['subject'];
 
-			if($sender == $id or $receiver == $id){
+			if($sender == $id or $receiver == $id And $subject == $sub){
 				$message = $row_subject['message'];
 				$dateTime = $row_subject['date_time'];
 			    $rowFiles = $row_subject['files'];
@@ -940,9 +1033,10 @@
 		        $lastname = $getNames_query['lastname'];
 
 		        ?>
-		        <?php if($receiver == $receiverId): ?>
+		        <?php if($receiver == $id): ?>
 		        	<div class="messages sender">
-		        		<span class="name"><?php echo "@ME"; ?></span>
+		        		<span class="name"><?php echo '@'.$firstname.''.$lastname; ?></span>
+		        		
 
 						<span class="date-time"><?php echo $dateTime; ?></span>
 
@@ -968,8 +1062,8 @@
 					</div>
 		        <?php else: ?>
 		        	<div class="messages receiver">
-		        		<span class="name"><?php echo '@'.$firstname.''.$lastname; ?></span>
-
+		        		
+		        		<span class="name"><?php echo "@ME"; ?></span>
 						<span class="date-time"><?php echo $dateTime; ?></span>
 
 						<span class="message"><?php echo $message; ?></span>
@@ -1006,11 +1100,12 @@
 				<form action="" method="post" enctype="multipart/form-data">
 					<textarea name="message" placeholder="Enter message *" required autofocus></textarea>
 					<input type="file" name="fileTarget" />
-					<button type="submit" name="send">Send</button>
+					<button type="submit" name="send" value="<?php echo $dataUser['id']; ?>">Send</button>
 
 					<?php 
 						if (isset($_POST['send'])) {
 							header('Location: '.$_SERVER['REQUEST_URI']);
+							$send = mysqli_real_escape_string($db, $_POST['send']);
 
 							$fileName = $_FILES['fileTarget']['name'];
 					 		$message = mysqli_real_escape_string($db, $_POST['message']);
@@ -1023,7 +1118,7 @@
 							$result = move_uploaded_file($tempFileName,$fileTarget);
 
 							if (empty($result)) {
-								$sql_sendMessage = "INSERT INTO tbl_messages (sender_id, receiver_id, message, subject, date_time, files) VALUES ('$id', '$receiverId', '$message', '$subject', '$dateTime', '$fileName')";
+								$sql_sendMessage = "INSERT INTO tbl_messages (sender_id, receiver_id, message, subject, date_time, files) VALUES ('$id', '$send', '$message', '$subject', '$dateTime', '$fileName')";
 								mysqli_query($db, $sql_sendMessage);
 								
 								?>
@@ -1224,8 +1319,9 @@
 		    			<?php echo "<a href = 'readmore.php?id=".$categoryID."'>"?>Read More</a>
 					</div>
  				<?php 
- 				?></div><?php
 			}
+
+			?></div><?php
 		}
 	}
 

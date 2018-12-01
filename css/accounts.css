@@ -5,16 +5,10 @@
   padding-right: 0;
   border-right: 0;
 }
-.login-index .page-wrapper .inner-wrapper,
-.register-index .page-wrapper .inner-wrapper,
-.jobpost-index .page-wrapper .inner-wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  padding: 50px;
-  background: #fff;
+.login-index .page-wrapper .main-column,
+.register-index .page-wrapper .main-column,
+.jobpost-index .page-wrapper .main-column {
+  padding: 40px;
 }
 .login-index .page-wrapper h3,
 .register-index .page-wrapper h3,
@@ -122,17 +116,6 @@
 .jobpost-index .page-wrapper .info-container p a:hover {
   text-decoration: underline;
 }
-.account-index .page-main {
-  background: #e1e1e1;
-}
-.account-index .page-wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  padding: 50px 25px;
-}
 .account-index .page-wrapper .left-column {
   width: 30%;
   margin-right: 30px;
@@ -145,6 +128,10 @@
   font-size: 25px;
   text-transform: uppercase;
   text-align: center;
+}
+.account-index .page-wrapper .left-column .tab-list {
+  border: 1px solid #e1e1e1;
+  border-top: 0;
 }
 .account-index .page-wrapper .left-column .tab-list li:last-child a {
   border-bottom: 0;
@@ -173,6 +160,7 @@
 .account-index .page-wrapper .right-column .tab-content {
   display: none;
   padding: 20px;
+  border: 1px solid #e1e1e1;
 }
 .account-index .page-wrapper .right-column .tab-content h3 {
   padding-bottom: 20px;
@@ -235,15 +223,11 @@
   overflow-y: auto;
 }
 .account-index .page-wrapper .right-column .editprofile-container form .save-btn {
-  display: block;
   max-width: 250px;
   padding: 10px 15px;
-  margin-bottom: 30px;
   border: 0;
   background: #960898;
   color: #fff;
-  font-family: 'roboto_condensedbold';
-  text-transform: uppercase;
 }
 .account-index .page-wrapper .right-column .jobposted-container {
   max-height: 400px;
@@ -370,4 +354,103 @@
   display: block;
   margin-bottom: 10px;
   font-size: 15px;
+}
+@media only screen and (max-width: 769px) {
+  .account-index .page-wrapper .left-column h3 .fa {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-index .main-column .form,
+  .register-index .main-column .form,
+  .jobpost-index .main-column .form {
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .login-index .main-column .form,
+  .register-index .main-column .form,
+  .jobpost-index .main-column .form,
+  .login-index .main-column .info-container,
+  .register-index .main-column .info-container,
+  .jobpost-index .main-column .info-container {
+    width: 100%;
+  }
+  .login-index .main-column .info-container,
+  .register-index .main-column .info-container,
+  .jobpost-index .main-column .info-container {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .account-index .page-wrapper .left-column,
+  .account-index .page-wrapper .right-column {
+    width: 100%;
+  }
+  .account-index .page-wrapper .left-column {
+    margin: 0 0 30px;
+  }
+  .account-index .page-wrapper .left-column h3 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+  }
+  .account-index .page-wrapper .left-column h3 .fa {
+    display: block;
+  }
+  .account-index .page-wrapper .left-column .tab-container {
+    display: none;
+  }
+  .account-index .page-wrapper .left-column.active .fa:before {
+    content: '\f107';
+  }
+  .account-index .page-wrapper .left-column.active .tab-container {
+    display: block;
+  }
+  .account-index .page-wrapper .left-column.active .tab-container a {
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .login-index .page-wrapper .main-column,
+  .register-index .page-wrapper .main-column,
+  .jobpost-index .page-wrapper .main-column {
+    padding: 20px;
+  }
+  .login-index .page-wrapper h3,
+  .register-index .page-wrapper h3,
+  .jobpost-index .page-wrapper h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .login-index .page-wrapper .info-container p,
+  .register-index .page-wrapper .info-container p,
+  .jobpost-index .page-wrapper .info-container p {
+    font-size: 16px;
+  }
+  .account-index .page-wrapper .left-column h3 {
+    font-size: 20px;
+  }
+  .account-index .page-wrapper .right-column .editprofile-container form .photo img {
+    max-width: 100px;
+  }
+  .account-index .page-wrapper .right-column .editprofile-container form .save-btn {
+    max-width: 100%;
+  }
+  .account-index .page-wrapper .right-column .messagebox-container a {
+    display: block;
+  }
+  .account-index .page-wrapper .right-column .tab-content h3 {
+    font-size: 20px;
+  }
 }
