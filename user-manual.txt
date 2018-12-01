@@ -1,0 +1,28 @@
+JobFair - Your easiest job finder online.
+
+This is a website where you can easily find your desired jobs and easy tracking of your message through your aspiring jobseekers.
+
+Features include:
+
+Job Searching
+Easy Job Application
+Jobseekers Listing
+Job Posting
+Profiling
+Messages
+Application Status
+
+Job Searching - You can search your desired jobs - this includes filtered by category to make the search easier. You can also check it's description even if you are not logged in but cannot apply to it. Need to register fisrt to apply.
+
+Easy Job Application - Removed redundancy on this one, all you have to do is register, complete your profile, search desired jobs, apply, upload resume or CV and send the application.
+
+Jobseekers Listing - A list of jobseekers who registered on JobFair where employer can send a message directly.
+
+Job Posting - Employers can post a job where jobseekers can apply in to.
+
+Profiling - for Jobseekers - they can upload their desired photo, expected salary, and other that can make their profile stand out from the rest.
+for Employer - they can upload their photo or their company photo and the company they represent.
+
+Messages - A list of messages from employers whom they sent their message directly via jobseekers section or on their aspiring applicants. Per message includes a thread where employers and jobseekers corresponds - this is for easy tracking of messages. Jobseekers cannot send a message to the employer unless the employer sent a message first and then jobseekers can reply to it on the message thread.
+
+Application Status - After sending application to the desired job(s), jobseekers can easily check their status on the application section either it was received by the employer or still pending. These statuses only be modified by the employer whom they applied in to.
