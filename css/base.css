@@ -135,7 +135,7 @@ body {
 }
 body .page-main {
   padding-top: 100px;
-  background: #f7f7f7;
+  background: #e4e3e3;
 }
 body .page-wrapper {
   min-height: calc(100vh - 44px);
@@ -216,6 +216,7 @@ h6 {
 }
 button,
 input[type='submit'] {
+  -webkit-appearance: none;
   cursor: pointer;
   font-size: 14px;
   font-family: 'roboto_condenseditalic';

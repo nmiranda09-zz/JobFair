@@ -20,7 +20,7 @@
 
 			<div class="search-container">
 				<form action="categorysearch.php" method="post">
-					<input type="search" name="keywordSearch" placeholder="Keywords" required />
+					<input type="text" name="keywordSearch" placeholder="Keywords" required />
 
 					<?php jobCategories(); ?>
 

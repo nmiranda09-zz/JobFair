@@ -421,6 +421,11 @@
     text-align: left;
   }
 }
+@media only screen and (min-width: 769px) {
+  .account-index .page-wrapper .left-column h3 fa {
+    display: none;
+  }
+}
 @media only screen and (max-width: 479px) {
   .login-index .page-wrapper .main-column,
   .register-index .page-wrapper .main-column,
